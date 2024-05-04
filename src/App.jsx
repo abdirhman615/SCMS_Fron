@@ -4,7 +4,6 @@ import DashboardPage from "./Dashboard/StdDashboard";
 import { Route, Routes } from 'react-router-dom'
 
 
-
 import {Faculty} from "./components/FacultyPage/Faculty";
 import {Department} from "./departmentPage/department";
 import {Class} from "./components/ClassPage/Class";

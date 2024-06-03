@@ -7,7 +7,7 @@ import StdSidebar from './StdSidrbar';
 import LogoImage from '../../logo/logo.png'; // Import your logo image
 import { Menu as MenuIcon } from '@mui/icons-material'; // Import the MenuIcon for the IconButton
 import { Outlet } from "react-router-dom";
-import HomePage from "../components/HomePage/Home";
+// import HomePage from "../components/HomePage/Home";
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),

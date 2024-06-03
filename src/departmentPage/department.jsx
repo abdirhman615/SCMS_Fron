@@ -70,8 +70,8 @@ export const Department = ()=>{
     useEffect(() =>{
         const baseURL =import.meta.env.VITE_APP_API_URL
         const subget= async()=>{
-           // const facultylist=await axios.get(`${baseURL}/Faculty`)
-            const facultylist=await axios.get('https://backend-scms.vercel.app/Faculty')
+            const facultylist=await axios.get(`${baseURL}Faculty`)
+           // const facultylist=await axios.get('https://backend-scms.vercel.app/Faculty')
             
             
             const facultyval=await facultylist.data.AllFaculty

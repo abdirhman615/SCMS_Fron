@@ -66,22 +66,22 @@ const StdSidebar  = ({openDrowerstd,drowerstdClouse}) => {
 
       </Link>
       <Divider />
-    <Link to={'Faculty'} style={{textDecoration:"none",color:"black"}}>
-      <ListItemButton onClick={()=>setMenu('Faculty')}  sx={[ selectedMenu==='Faculty' && {bgcolor:"primary.main",color:"white",":hover":{bgcolor:"primary.dark"}}]}>
+    <Link to={'ViewComplaints'} style={{textDecoration:"none",color:"black"}}>
+      <ListItemButton onClick={()=>setMenu('ViewComplaints')}  sx={[ selectedMenu==='ViewComplaints' && {bgcolor:"primary.main",color:"white",":hover":{bgcolor:"primary.dark"}}]}>
         <ListItemIcon>
-          <LocalLibraryIcon sx={[ selectedMenu==='Faculty' && {color:"white"}]} />
+          <LocalLibraryIcon sx={[ selectedMenu==='ViewComplaints' && {color:"white"}]} />
         </ListItemIcon>
-        <ListItemText primary="Faculty" />
+        <ListItemText primary="View Complaints" />
       </ListItemButton>
 
       </Link>
       <Divider />
-    <Link to={'Department'} style={{textDecoration:"none",color:"black"}}>
-      <ListItemButton onClick={()=>setMenu('Department')}  sx={[ selectedMenu==='Department' && {bgcolor:"primary.main",color:"white",":hover":{bgcolor:"primary.dark"}}]}>
+    <Link to={'FAQs'} style={{textDecoration:"none",color:"black"}}>
+      <ListItemButton onClick={()=>setMenu('FAQs')}  sx={[ selectedMenu==='FAQs' && {bgcolor:"primary.main",color:"white",":hover":{bgcolor:"primary.dark"}}]}>
         <ListItemIcon>
-          <GroupsIcon sx={[ selectedMenu==='Department' && {color:"white"}]} />
+          <GroupsIcon sx={[ selectedMenu==='FAQs' && {color:"white"}]} />
         </ListItemIcon>
-        <ListItemText primary="Department" />
+        <ListItemText primary="FAQs" />
       </ListItemButton>
       
       </Link>

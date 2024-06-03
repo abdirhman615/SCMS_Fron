@@ -79,7 +79,7 @@ useEffect(() =>{
     const baseURL =import.meta.env.VITE_APP_API_URL
 
     const subget= async()=>{
-        const deplist=await axios.get(`${baseURL}/department`)
+        const deplist=await axios.get(`${baseURL}department`)
        // const deplist=await axios.get('https://backend-scms.vercel.app/department')
         
         const Depval=await deplist.data.Alldepartment
@@ -88,7 +88,7 @@ useEffect(() =>{
 console.log(Depval)
 
 
-const Classlist=await axios.get(`${baseURL}/Class`)
+const Classlist=await axios.get(`${baseURL}Class`)
             const Classval=await Classlist.data.AllClass
             setsubcatClass(Classval)
              console.log("Classval",Classval)

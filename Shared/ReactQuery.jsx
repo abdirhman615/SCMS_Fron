@@ -10,9 +10,9 @@ export const GetQuery = (endpoint, queryKey) => {
         onError: () => {
             toast.error("sorry xogta lama keenin")
         },
-        // onSuccess: () => {
-        //     toast.success("Haa xogta waa lakeeney")
-        // }
+        onSuccess: () => {
+            toast.success("Haa xogta waa lakeeney")
+        }
     })
 }
 
@@ -22,6 +22,7 @@ export const PostQuery = (endpoint, queryKey) => {
         mutationFn: async (data) => await AddData(endpoint, data),
         onSuccess: () => {
             queryclient.invalidateQueries({ queryKey: [queryKey] })
+            toast.success("Xogta waa la Xareye")
         },
         onError: (err) => {
             toast.error("sorry datada lama xareynin")
@@ -37,6 +38,7 @@ export const UpdateQuery = (endpoint, queryKey) => {
         mutationFn: (data) => Update(endpoint, data),
         onSuccess: () => {
             queryclient.invalidateQueries({ queryKey: [queryKey] })
+            toast.success("Xogta waa la Cusboonaysiiye")
         },
         onError: () => {
             toast.error("sorry datada lama xareynin")
@@ -51,7 +53,7 @@ export const DeleteQuery = (endpoint, queryKey) => {
         mutationFn: (id) => DeleteData(endpoint, id),
         onSuccess: () => {
             queryclient.invalidateQueries({ queryKey: [queryKey] })
-            toast.success("Deleted successfully")
+            toast.success("Xogta waa la Tirtiry")
 
         },
         onError: () => {

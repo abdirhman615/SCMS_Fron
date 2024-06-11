@@ -211,7 +211,7 @@ const deleteStudentInfo = async (data)=>{
 
 
 
-<TextField label="Student ID" {...register("STD_id")} variant="outlined" size="small" fullWidth/>
+{/* <TextField label="Student ID" {...register("STD_id")} variant="outlined" size="small" fullWidth/> */}
 <TextField label="Student name" {...register("Stdname")} variant="outlined" size="small" fullWidth/>
 {errors.Stdname ? (
                   <Typography sx={{ color: "error.main" }}>

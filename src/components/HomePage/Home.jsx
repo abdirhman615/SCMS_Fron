@@ -62,9 +62,9 @@ export const HomePage = ()=>{
 
 
     const YupValidate = yup.object({
-        Student_id: yup.string().required('Enter The Student Id'),
-        department_id: yup.string().required("Enter The department Name"),
-        Class_id: yup.string().required('Enter The Class Name'),
+        // Student_id: yup.string().required('Enter The Student Id'),
+        // department_id: yup.string().required("Enter The department Name"),
+        // Class_id: yup.string().required('Enter The Class Name'),
         Description: yup.string().required("Enter The Description"),
         Complain_date: yup.string().required('Enter The Complain Data'),
         // Status: yup.string().required("Enter The Status"),
@@ -92,7 +92,7 @@ export const HomePage = ()=>{
     const [Depval,setDepval]=useState('')
     const [Classval,setClassval]=useState('')
     const [STDval,setSTDval]=useState('')
-    const {Std,LogOut,STD_id} = useUserContext()
+    const {Std,LogOut,STD_id,STDID} = useUserContext()
     const ToggleDailog = ()=>{
         setDailog(!dailogOpen)
     }
@@ -100,33 +100,32 @@ export const HomePage = ()=>{
     const baseURL =import.meta.env.VITE_APP_API_URL
     useEffect(() =>{
         const subget= async()=>{
-            const deplist=await axios.get(`${baseURL}department`)
+    //         const deplist=await axios.get(`${baseURL}department`)
             
-            const Depval=await deplist.data.Alldepartment
+    //         const Depval=await deplist.data.Alldepartment
             
-            setsubcatDep(Depval)
-    console.log(Depval)
+    //         setsubcatDep(Depval)
+    // console.log(Depval)
     
     
-    const Classlist=await axios.get(`${baseURL}Class`)
-                const Classval=await Classlist.data.AllClass
-                setsubcatClass(Classval)
-                 console.log("Classval",Classval)
+    // const Classlist=await axios.get(`${baseURL}Class`)
+    //             const Classval=await Classlist.data.AllClass
+    //             setsubcatClass(Classval)
+    //              console.log("Classval",Classval)
                  
     const STDlist=await axios.get(`${baseURL}Student`)
                 const STDval=await STDlist.data.AllStudent
                 setsubcatSTD(STDval)
                  console.log("STDval",STDval)
     
-    
         }
         subget()
     
     }, [])
-
+ 
 const {data:Complain,isLoading,isError}= GetQuery('/Complain','Complain')
 
-const {mutate,isLoading:mutateLoading} = PostQuery('/Complain','Complain')
+const {mutate,isLoading:mutateLoading} = PostQuery('/complain','complain')
 
 const {mutate:updateMutate,isLoading:updateLoading} = UpdateQuery(`/Complain/${ComplainId}`,'Complain')
  
@@ -153,8 +152,9 @@ reset()
         try{
         //     await AddClient(subdata)
         //   console.log("Data has been saved")
-        //   toast.success("Data has been saved")
+          
         mutate(data)
+        // toast.success("Xogta waa la Xareye")
           ToggleDailog()
           reset()
               } catch( err){
@@ -197,15 +197,9 @@ const deleteComplainInfo = async (data)=>{
    <Box p={4}>
 
    <ConfirmDelete open={deletehook.open} toggle={deletehook.Toggle} message={deletehook.message} confirm={deleteCheck} />
- <Breadcrumbs aria-label="breadcrumb">
-  <Link underline="hover" color="inherit" to={'Dashboard'}>
-    Dashboard
-  </Link>
-  <Typography color="text.primary">Complain</Typography>
-</Breadcrumbs>
 
- <Divider sx={{height:10}}/>
-    <Alert severity="info">Our Complain</Alert>
+
+
     {/* <Box sx={{display:"flex",justifyContent:"space-between"}} my={2}>
         <Typography variant="h6">List Complain</Typography>
         <IconButton   onClick={ToggleDailog}>
@@ -224,17 +218,13 @@ const deleteComplainInfo = async (data)=>{
 
 <Stack  spacing={2} direction={'column'}>
 <FormControl >
-<TextField label='Student name' multiline disabled maxRows={4} variant="outlined" {...register("Student_id")} value={Std} size="small" fullWidth/>
+<TextField label='Student name' multiline defaultValue={STDID}  maxRows={4} variant="outlined" {...register("Student_id")}  size="small"   fullWidth/>
 
-{errors.Student_id ? (
-                  <Typography sx={{ color: "error.main" }}>
-                    {errors.Student_id.message}
-                  </Typography>
-                ) : null}
+
 </FormControl>
 
 
-<FormControl >
+{/* <FormControl >
 <InputLabel id="demo-multiple-name-label">Student Name</InputLabel>
   <Select label="Student id" variant="outlined" {...register("Student_id")} size="small" fullWidth>
     
@@ -249,15 +239,15 @@ const deleteComplainInfo = async (data)=>{
                     {errors.Student_id.message}
                   </Typography>
                 ) : null}
-</FormControl>
+</FormControl> */}
 
-<FormControl >
+{/* <FormControl >
 <InputLabel id="demo-multiple-name-label">Departments</InputLabel>
   <Select label="Department id" variant="outlined" {...register("department_id")} size="small" fullWidth>
     
-  {subcatDep.map((Depval) => (
-    <MenuItem key={Depval._id} value={Depval._id}>
-      {Depval.departmentname}
+  {subcatSTD.map((STDval) => (
+    <MenuItem key={STDval._id} value={STDval._id}>
+      {STDval.department_id.departmentname}
     </MenuItem>
   ))}
 </Select>
@@ -266,9 +256,9 @@ const deleteComplainInfo = async (data)=>{
                     {errors.department_id.message}
                   </Typography>
                 ) : null}
-</FormControl>
+</FormControl> */}
 
-<FormControl >
+{/* <FormControl >
 <InputLabel id="demo-multiple-name-label">Class Name</InputLabel>
   <Select label="Class id" variant="outlined" {...register("Class_id")} size="small" fullWidth>
     
@@ -283,7 +273,7 @@ const deleteComplainInfo = async (data)=>{
                     {errors.Class_id.message}
                   </Typography>
                 ) : null}
-</FormControl>
+</FormControl> */}
 
 
 {/* <TextField label="Description" {...register("Description")} variant="outlined" size="small" fullWidth/> */}
@@ -382,7 +372,10 @@ const deleteComplainInfo = async (data)=>{
               <Typography variant="body1" paragraph>
                 Check the status of your complaints or view others'.
               </Typography>
-              <Button variant="outlined">View</Button>
+              <Link  to={'ViewComplaints'}>
+    <Button variant="outlined">View</Button>
+  </Link>
+             
             </StyledPaper>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
@@ -394,7 +387,9 @@ const deleteComplainInfo = async (data)=>{
               <Typography variant="body1" paragraph>
                 Find quick answers to common questions.
               </Typography>
+              <Link  to={'FAQs'}>
               <Button variant="outlined">Explore FAQs</Button>
+              </Link>
             </StyledPaper>
           </Grid>
         </Grid>

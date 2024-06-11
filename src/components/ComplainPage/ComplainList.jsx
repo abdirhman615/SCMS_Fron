@@ -3,39 +3,44 @@ import { DataGrid } from '@mui/x-data-grid';
 import React from 'react'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
-export default function ComplainList({ComplainData,update,DeleteComplain}) {
+import { AddCircleOutlineSharp ,ErrorOutlineOutlined} from "@mui/icons-material";
+export default function ComplainList({ReplyData,ComplainData,update,DeleteComplain})
+
+{
+  
      const columns = [
-        { field: '_id', headerName: 'ID', width: 100 },
+       
         {
           field: 'Student_id',
-          headerName: 'Student_id',
+          headerName: 'Student Name',
           width: 150,
           editable: true,
 
           renderCell: (params) => {
             return <Box> {params.row.Student_id.Stdname} {""}
+            
             </Box>
           }
         },
         {
-          field: 'department_id',
-          headerName: 'department_id',
+          field: 'Student_id.department_id',
+          headerName: 'department Name',
           width: 150,
           editable: true,
 
           renderCell: (params) => {
-            return <Box> {params.row.department_id.departmentname} {""}
+            return <Box> {params.row.Student_id.department_id.departmentname} {""}
             </Box>
           }
         },
         {
-          field: 'Class_id',
-          headerName: 'Class_id',
+          field: 'Student_id.Class_id',
+          headerName: 'Class Name',
           width: 100,
           editable: true,
 
           renderCell: (params) => {
-            return <Box> {params.row.Class_id.Classname} {""}
+            return <Box> {params.row.Student_id.Class_id.Classname} {""}
             </Box>
           }
         },
@@ -65,11 +70,11 @@ export default function ComplainList({ComplainData,update,DeleteComplain}) {
           renderCell:(params)=>{
 
             return <Box>
-              <IconButton onClick={()=>update(params.row)}>
-                <BorderColorIcon sx={{color:"primary.main"}}/>
+              <IconButton onClick={()=>ReplyData(params.row)}>
+                <AddCircleOutlineSharp sx={{color:"primary.main"}}/>
               </IconButton>
               <IconButton onClick={()=>DeleteComplain(params.row)}><DeleteForeverIcon sx={{color:"error.main"}} /></IconButton>
-              
+             
             </Box>
           }
         },

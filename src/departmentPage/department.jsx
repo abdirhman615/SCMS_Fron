@@ -38,7 +38,7 @@ import Select from '@mui/material/Select';
 
 export const Department = ()=>{
     const YupValidate = yup.object({
-        DEP_ID: yup.string().required('Enter The Department ID'),
+        // DEP_ID: yup.string().required('Enter The Department ID'),
         departmentname: yup.string().required('Enter The Department Name'),
         Faculty_id: yup.string().required("Enter The Faculty id"),
       });
@@ -147,7 +147,7 @@ reset()
 
 const UpdateDepartmentInfo = async (data)=>{
 // console.log("xogta la rabbo in la update gareeyo",data)
-    setValue("DEP_ID",data.DEP_ID)
+    // setValue("DEP_ID",data.DEP_ID)
     setValue("departmentname",data.departmentname)
     setValue("Faculty_id",data.Faculty_id)
     setDepartmentId(data._id)
@@ -209,12 +209,12 @@ const deleteDepartmentInfo = async (data)=>{
 
 
 
-<TextField label="Department ID" {...register("DEP_ID")} variant="outlined" size="small" fullWidth/>
+{/* <TextField label="Department ID" {...register("DEP_ID")} variant="outlined" size="small" fullWidth/>
 {errors.DEP_ID ? (
                   <Typography sx={{ color: "error.main" }}>
                     {errors.DEP_ID.message}
                   </Typography>
-                ) : null}
+                ) : null} */}
 <TextField label="Department name" {...register("departmentname")} variant="outlined" size="small" fullWidth/>
 {errors.departmentname ? (
                   <Typography sx={{ color: "error.main" }}>

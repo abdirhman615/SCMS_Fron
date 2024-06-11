@@ -34,7 +34,7 @@ import {GetQuery,PostQuery,UpdateQuery,DeleteQuery} from '../../../Shared/ReactQ
 
 export const Reply = ()=>{
     const YupValidate = yup.object({
-        Reply_ID: yup.string().required('Enter The Reply ID'),
+        // Reply_ID: yup.string().required('Enter The Reply ID'),
         Complain_id: yup.string().required('Enter The Complain '),
         Message: yup.string().required("Enter The Massage"),
       });
@@ -136,7 +136,7 @@ reset()
 
 const UpdateReplyInfo = async (data)=>{
 // console.log("xogta la rabbo in la update gareeyo",data)
-    setValue("Reply_ID",data.Reply_ID)
+    // setValue("Reply_ID",data.Reply_ID)
     setValue("Complain_id",data.Complain_id)
     setValue("Message",data.Message)
     setReplyId(data._id)
@@ -197,12 +197,6 @@ const deleteReplyInfo = async (data)=>{
 
 
 
-<TextField label="Reply ID" {...register("Reply_ID")} variant="outlined" size="small" fullWidth/>
-{errors.Reply_ID ? (
-                  <Typography sx={{ color: "error.main" }}>
-                    {errors.Reply_ID.message}
-                  </Typography>
-                ) : null}
 
 
 

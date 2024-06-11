@@ -27,7 +27,8 @@ const StdSidebar  = ({openDrowerstd,drowerstdClouse}) => {
   const theme = useTheme();
   const [selectedMenu,setMenu]=useState('')
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const {Std,LogOut,STD_id} = useUserContext()
+  const {Std,LogOut,Stdname,IdStd,STDID} = useUserContext()
+ console.log(STDID)
   const handleLogout = () => {
     // Handle logout logic
     navigate('/login');
@@ -50,10 +51,12 @@ const StdSidebar  = ({openDrowerstd,drowerstdClouse}) => {
         <img src={LogoImage} alt="Logo" style={{ width: 100 }} />
       </Box>
       <Typography  gutterBottom sx={{ color: theme.palette.primary.dark, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 2 }}>
-               {Std}
+              
+               {Stdname}
             </Typography>
+            
       <Typography  gutterBottom sx={{ color: theme.palette.primary.dark, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 2 }}>
-               {STD_id}
+               {IdStd}
             </Typography>
      <Divider />
      <Link to={'HomePage'} style={{textDecoration:"none",color:"black"}}>

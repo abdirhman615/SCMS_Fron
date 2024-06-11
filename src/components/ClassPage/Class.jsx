@@ -29,7 +29,7 @@ import {GetQuery,PostQuery,UpdateQuery,DeleteQuery} from '../../../Shared/ReactQ
 
 export const Class = ()=>{
     const YupValidate = yup.object({
-        Class_ID: yup.string().required('Enter The Class ID'),
+        // Class_ID: yup.string().required('Enter The Class ID'),
         Classname: yup.string().required('Enter The Class Name'),
       });
     
@@ -116,7 +116,7 @@ reset()
 
 const UpdateClassInfo = async (data)=>{
 // console.log("xogta la rabbo in la update gareeyo",data)
-    setValue("Class_ID",data.Class_ID)
+    // setValue("Class_ID",data.Class_ID)
     setValue("Classname",data.Classname)
     setClassId(data._id)
     ToggleDailog()
@@ -176,12 +176,12 @@ const deleteClassInfo = async (data)=>{
 
 
     
-<TextField label="Class ID" {...register("Class_ID")} variant="outlined" size="small" fullWidth/>
+{/* <TextField label="Class ID" {...register("Class_ID")} variant="outlined" size="small" fullWidth/>
 {errors.Class_ID ? (
                   <Typography sx={{ color: "error.main" }}>
                     {errors.Class_ID.message}
                   </Typography>
-                ) : null}
+                ) : null} */}
 <TextField label="Class name" {...register("Classname")} variant="outlined" size="small" fullWidth/>
 {errors.Classname ? (
                   <Typography sx={{ color: "error.main" }}>

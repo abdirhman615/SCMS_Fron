@@ -157,11 +157,9 @@ open={openDrower}
         md:"block"
     },borderRight:1,borderColor:"#eee"}}> 
   
+<Avatar alt="Remy Sharp"  sx={{alignItems: "center",marginLeft:9 , display: "flex", justifyContent: "space-between",  width: 70, height:70, }} src="../../logo/logo.png" />
 
-<Box sx={{p:4}}>
 
-
-</Box>
     
     
 
@@ -169,7 +167,8 @@ open={openDrower}
     {/* Menu list */}
     
 
-   
+    <Box >
+  </Box>
     <Box>
    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
       component="nav"

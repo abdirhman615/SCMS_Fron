@@ -12,6 +12,10 @@ export const UserContextProvider = ({ children }) => {
     const [email, setEmail] = useState('');
     const [Std, setStd] = useState('');
     const [IdStd, setIdStd] = useState('');
+    const [Role, setRole] = useState('');
+    const [STDID, setSTDID] = useState('');
+    const [COMID, setCOMID] = useState('');
+    const [Stdname, setStdname] = useState('');
     const [isLogin, setIsLogin] = useState(false)
     const navigate = useNavigate();
 
@@ -27,15 +31,20 @@ export const UserContextProvider = ({ children }) => {
     useEffect(() => {
         const token = jscookie.get('token')
 
-        if (!token) {
-            usenavigate("/")
-        } else {
+        if (!token ) {
+        // if (!token || (window.location.pathname !== "/admin" && window.location.pathname !== "/")) {
+            navigate("/");
+        }else {
             // console.log(jwtDecode(token))
             const jwtdecoded = jwtDecode(token)
+            // console.log(jwtdecoded)
             setEmail(jwtdecoded.username);
+            setRole(jwtdecoded.Role);
             setStd(jwtdecoded.Email);
-            setIdStd(jwtdecoded._id);
-        
+            setIdStd(jwtdecoded.STD_id);
+            setSTDID(jwtdecoded.id);
+            setCOMID(jwtdecoded._id);
+            setStdname(jwtdecoded.Stdname);
             setIsLogin(true);
             
         }
@@ -64,7 +73,7 @@ export const UserContextProvider = ({ children }) => {
     
 
     return (
-        <UserContextApi.Provider value={{ email,Std,IdStd ,LogOut, isLogin, setIsLogin }}>
+        <UserContextApi.Provider value={{ email,Std,IdStd,Stdname ,COMID,STDID,LogOut, isLogin, setIsLogin ,Role,setRole}}>
             {children}
         </UserContextApi.Provider>
     )

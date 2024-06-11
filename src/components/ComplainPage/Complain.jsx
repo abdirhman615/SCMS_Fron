@@ -39,6 +39,11 @@ export const Complain = ()=>{
         Class_id: yup.string().required('Enter The Class Name'),
         Description: yup.string().required("Enter The Description"),
         Complain_date: yup.string().required('Enter The Complain Data'),
+       
+          Reply_ID: yup.string().required('Enter The Reply ID'),
+          Complain_id: yup.string().required('Enter The Complain '),
+          Message: yup.string().required("Enter The Massage"),
+      
         // Status: yup.string().required("Enter The Status"),
       });
     
@@ -56,6 +61,7 @@ export const Complain = ()=>{
     // const queryclient = useQueryClient();
     const [Complaindeleteid,setComplaindeleteid]=useState('')
     const [ComplainId,setComplainId]=useState('')
+    const [ReplyId,setReplyId]=useState('')
     const [showAlert, setshowAlert] = useState(false)
     const [apiData, setapiData] = useState("")  
     const[subcatClass,setsubcatClass]= useState([])
@@ -64,12 +70,14 @@ export const Complain = ()=>{
     const [Depval,setDepval]=useState('')
     const [Classval,setClassval]=useState('')
     const [STDval,setSTDval]=useState('')
+    const[subcat,setsubcat]= useState([]) 
     const ToggleDailog = ()=>{
         setDailog(!dailogOpen)
     }
 
     const baseURL =import.meta.env.VITE_APP_API_URL
     useEffect(() =>{
+      
         const subget= async()=>{
             const deplist=await axios.get(`${baseURL}department`)
             
@@ -90,23 +98,33 @@ export const Complain = ()=>{
                  console.log("STDval",STDval)
     
     
-        }
+       
+
+
+        
+          const Complist=await axios.get(`${baseURL}Complain`)
+          
+          const CompVal=await Complist.data.AllComplain
+          
+          setsubcat(CompVal)
+  console.log(CompVal)
         subget()
-    
+      }
     }, [])
 
 const {data:Complain,isLoading,isError}= GetQuery('/Complain','Complain')
 
-const {mutate,isLoading:mutateLoading} = PostQuery('/Complain','Complain')
+const {mutate,isLoading:mutateLoading} = PostQuery('/Reply','Reply')
 
-const {mutate:updateMutate,isLoading:updateLoading} = UpdateQuery(`/Complain/${ComplainId}`,'Complain')
+
+// const {mutate:updateMutate,isLoading:updateLoading} = UpdateQuery(`/Complain/${ComplainId}`,'Complain')
  
 const {mutate:deleteMutate} = DeleteQuery(`/Complain/${Complaindeleteid}`,'Complain')
 
 
 const AddNewComplain = async (data)=>{
 
-    if(ComplainId !==''){
+    if(ReplyId !==''){
 
  try{
 //   await UpdateClient(ComplainId,subdata)
@@ -133,19 +151,21 @@ reset()
           toast.error(err.message)
               }
 
+
     }
-    
+    //  setReplyId(data.Description)
+     console.log("data",data.Description)
+   
 
    
 }
 
-const UpdateComplainInfo = async (data)=>{
-// console.log("xogta la rabbo in la update gareeyo",data)
-    setValue("Complainname",data.Complainname)
-    setValue("Creationdate",data.Creationdate)
-    setComplainId(data._id)
+const ReplyDataCmp = async (data)=>{
+  
+   
+            setReplyId(data._id)
     ToggleDailog()
-
+          
 }
 
 
@@ -158,7 +178,7 @@ const deleteCheck = ()=>{
 }
 
 const deleteComplainInfo = async (data)=>{
-   deletehook.setMessage(data.Complainname)
+   deletehook.setMessage(data.Description)
     deletehook.Toggle()
     setComplaindeleteid(data._id)
 }
@@ -187,93 +207,29 @@ const deleteComplainInfo = async (data)=>{
         backdropFilter: "blur(5px) sepia(5%)",
       }} PaperProps={{ sx: { borderRadius: "20px" } }} open={dailogOpen} onClose={ToggleDailog}>
         <DialogTitle sx={{ bgcolor: "primary.dark", color: "white" }}>New Complain</DialogTitle>
-        <Box component={"form"} onSubmit={handleSubmit(AddNewComplain)}>
+        <Box component={"form"} onSubmit={handleSubmit(ReplyDataCmp)}>
         <DialogContent>
         <Box sx={{width:"400px"}} mt={2}>
 
 
+        <Stack  spacing={2} direction={'column'}>
 
-<Stack  spacing={2} direction={'column'}>
 
-<FormControl >
-<InputLabel id="demo-multiple-name-label">Student Name</InputLabel>
-  <Select label="Student id" variant="outlined" {...register("Student_id")} size="small" fullWidth>
+
+
+        <TextField label="Complain_id" disabled  value={ReplyId} variant="outlined" {...register("Complain_id")} size="small" fullWidth/>
+
+
+
+<TextField label="Message" variant="outlined" {...register("Message")} size="small" fullWidth/>
+    {errors.Message ? (
+                  <Typography sx={{ color: "error.main" }}>
+                    {errors.Message.message}
+                  </Typography>
+                ) : null}
     
-  {subcatSTD.map((STDval) => (
-    <MenuItem key={STDval._id} value={STDval._id}>
-      {STDval.Stdname}
-    </MenuItem>
-  ))}
-</Select>
-{errors.Student_id ? (
-                  <Typography sx={{ color: "error.main" }}>
-                    {errors.Student_id.message}
-                  </Typography>
-                ) : null}
-</FormControl>
-
-<FormControl >
-<InputLabel id="demo-multiple-name-label">Departments</InputLabel>
-  <Select label="Department id" variant="outlined" {...register("department_id")} size="small" fullWidth>
-    
-  {subcatDep.map((Depval) => (
-    <MenuItem key={Depval._id} value={Depval._id}>
-      {Depval.departmentname}
-    </MenuItem>
-  ))}
-</Select>
-{errors.department_id ? (
-                  <Typography sx={{ color: "error.main" }}>
-                    {errors.department_id.message}
-                  </Typography>
-                ) : null}
-</FormControl>
-
-<FormControl >
-<InputLabel id="demo-multiple-name-label">Class Name</InputLabel>
-  <Select label="Class id" variant="outlined" {...register("Class_id")} size="small" fullWidth>
-    
-  {subcatClass.map((Classval) => (
-    <MenuItem key={Classval._id} value={Classval._id}>
-      {Classval.Classname}
-    </MenuItem>
-  ))}
-</Select>
-{errors.Class_id ? (
-                  <Typography sx={{ color: "error.main" }}>
-                    {errors.Class_id.message}
-                  </Typography>
-                ) : null}
-</FormControl>
-
-
-{/* <TextField label="Description" {...register("Description")} variant="outlined" size="small" fullWidth/> */}
-
-<TextField label="Description" multiline maxRows={4} variant="outlined" {...register("Description")}  size="small" fullWidth/>
-{errors.Description ? (
-                  <Typography sx={{ color: "error.main" }}>
-                    {errors.Description.message}
-                  </Typography>
-                ) : null}
-<TextField type="date" variant="outlined" {...register("Complain_date")} size="small" fullWidth/>
-{errors.Complain_date ? (
-                  <Typography sx={{ color: "error.main" }}>
-                    {errors.Complain_date.message}
-                  </Typography>
-                ) : null}
-{/* <FormControl sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-controlled-open-select-label">Status</InputLabel>
-        <Select label="Department id" variant="outlined" {...register("Status")} size="small" fullWidth
-        >
-          <MenuItem value="">
-            <em>Status</em>
-          </MenuItem>
-          <MenuItem value={"New"}>New</MenuItem>
-          <MenuItem value={"Open"}>Open</MenuItem>
-          
-        </Select>
-      </FormControl> */}
     </Stack>
+
 
     </Box>
         </DialogContent>
@@ -281,7 +237,7 @@ const deleteComplainInfo = async (data)=>{
           <Button onClick={ToggleDailog}>Cancel</Button>
           <Button variant="contained" disabled={mutateLoading} sx={{bgcolor:"primary"}} type="submit"  size="small">
 
-      {ComplainId !=='' ? "Update" : "Submit"}
+      {ReplyId !=='' ? "Send" : "Submit"}
           </Button>
  
         </DialogActions>
@@ -313,7 +269,7 @@ const deleteComplainInfo = async (data)=>{
  <Typography >Loading...</Typography>
      </Box>
 
- </Box>) :  <ComplainList DeleteComplain={deleteComplainInfo} ComplainData={Complain?.data.AllComplain} update={UpdateComplainInfo} />  }
+ </Box>) :  <ComplainList DeleteComplain={deleteComplainInfo} ComplainData={Complain?.data.AllComplain}  ReplyData={ ReplyDataCmp  } />  }
  
 
    
@@ -358,7 +314,7 @@ const deleteComplainInfo = async (data)=>{
           Add Complain
         </Typography>
         <Stack direction="row" spacing={2}>
-          <IconButton   onClick={ToggleDailog}>
+          <IconButton  >
 <AddCircleOutlineSharp />
         </IconButton>
         </Stack>

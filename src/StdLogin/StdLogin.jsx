@@ -48,7 +48,7 @@ const {
   const {mutateAsync,isLoading,isError,error,data:response}= useMutation({
       mutationFn: async (data) => {
          // return await axios.post ('http://localhost:5000/STDlogin',data)
-         return await axios.post ('https://backend-scms.vercel.app/STDlogin',data)
+         return await axios.post ('https://back-scms.vercel.app/STDlogin',data)
           //  return await axios.post (`${baseURL}/login`,data)
   
       },
@@ -86,7 +86,7 @@ const {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <StyledPaper elevation={6}>
-          <Avatar alt="Remy Sharp"  sx={{  width: 70, height:70 }} src="../../logo/logo.png" />
+          <Avatar alt="Remy Sharp"  sx={{  width: 70, height:70 }} src="https://firebasestorage.googleapis.com/v0/b/scms-c1999.appspot.com/o/logo.png?alt=media&token=bd3609f9-d878-4671-99f0-4ad4af6e489c" />
           <Typography component="h1" variant="h5" gutterBottom color="primary">
             Sign in
           </Typography>

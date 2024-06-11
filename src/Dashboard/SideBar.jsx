@@ -46,7 +46,7 @@ open={openDrower}
 </Box>
 
 <Box >
-<Avatar alt="Remy Sharp"  sx={{alignItems: "center", display: "flex", justifyContent: "space-between",  width: 70, height:70, }} src="../../logo/logo.png" />
+<Avatar alt="Remy Sharp"  sx={{alignItems: "center", display: "flex", justifyContent: "space-between",  width: 70, height:70, }} src="https://firebasestorage.googleapis.com/v0/b/scms-c1999.appspot.com/o/logo.png?alt=media&token=bd3609f9-d878-4671-99f0-4ad4af6e489c" />
   </Box>
   
 </Stack>
@@ -157,7 +157,7 @@ open={openDrower}
         md:"block"
     },borderRight:1,borderColor:"#eee"}}> 
   
-<Avatar alt="Remy Sharp"  sx={{alignItems: "center",marginLeft:9 , display: "flex", justifyContent: "space-between",  width: 70, height:70, }} src="../../logo/logo.png" />
+<Avatar alt="Remy Sharp"  sx={{alignItems: "center",marginLeft:9 , display: "flex", justifyContent: "space-between",  width: 70, height:70, }} src="https://firebasestorage.googleapis.com/v0/b/scms-c1999.appspot.com/o/logo.png?alt=media&token=bd3609f9-d878-4671-99f0-4ad4af6e489c" />
 
 
     

@@ -4,7 +4,7 @@ import { styled } from '@mui/system';
 import { useUserContext } from '../ContextApi/UserContext';
 import { useNavigate } from 'react-router-dom';
 import StdSidebar from './StdSidrbar';
-import LogoImage from '../../logo/logo.png'; // Import your logo image
+// import LogoImage from '../../logo/logo.png'; // Import your logo image
 import { Menu as MenuIcon } from '@mui/icons-material'; // Import the MenuIcon for the IconButton
 import { Outlet } from "react-router-dom";
 // import HomePage from "../components/HomePage/Home";
@@ -89,7 +89,7 @@ const DashboardPage = () => {
             >
               <MenuIcon />
             </IconButton>
-            <img src={LogoImage} alt="Logo" style={{ width: 40, marginLeft: isMobile ? 0 : 10 }} />
+            <img src={"https://firebasestorage.googleapis.com/v0/b/scms-c1999.appspot.com/o/logo.png?alt=media&token=bd3609f9-d878-4671-99f0-4ad4af6e489c"} alt="Logo" style={{ width: 40, marginLeft: isMobile ? 0 : 10 }} />
             <Typography variant="h6" component="div" sx={{ flexGrow: 1, ml: isMobile ? 1 : 2 }}>
               Dashboard
             </Typography>

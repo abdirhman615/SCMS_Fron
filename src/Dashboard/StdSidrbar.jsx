@@ -11,7 +11,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import GroupsIcon from '@mui/icons-material/Groups';
 // Import your logo image
-import LogoImage from '../../logo/logo.png';
+// import LogoImage from '../../logo/logo.png';
 
 const SidebarDrawer = styled(Drawer)(({ theme }) => ({
   width: 240,
@@ -48,7 +48,7 @@ const StdSidebar  = ({openDrowerstd,drowerstdClouse}) => {
       anchor="left"
     >
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', p: 2 }}>
-        <img src={LogoImage} alt="Logo" style={{ width: 100 }} />
+        <img src={"https://firebasestorage.googleapis.com/v0/b/scms-c1999.appspot.com/o/logo.png?alt=media&token=bd3609f9-d878-4671-99f0-4ad4af6e489c"} alt="Logo" style={{ width: 100 }} />
       </Box>
       <Typography  gutterBottom sx={{ color: theme.palette.primary.dark, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 2 }}>
               

@@ -16,7 +16,7 @@ export const StudentComplaints = ({ studentId }) => {
         // Fetch complaints
         const response = await axios.get(`${baseURL}complain/${STDID}`);
         const fetchedComplaints = response.data.complaints;
-        
+        setComplaints(fetchedComplaints)
         console.log("fetchedComplaints", fetchedComplaints);
 
         // Fetch replies for each complaint
@@ -25,7 +25,7 @@ export const StudentComplaints = ({ studentId }) => {
             const repResponse = await axios.get(`${baseURL}Reply/${complaint._id}`);
             const fetchedReply = repResponse.data.Reply;
             console.log("fetchedReply", fetchedReply);
-            setComplaints(response.data.complaints)
+            
             setReplys(fetchedReply)
             return { ...complaint, Reply: fetchedReply };
           })

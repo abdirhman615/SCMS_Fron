@@ -67,7 +67,7 @@ export const Users = ()=>{
     const baseURL =import.meta.env.VITE_APP_API_URL
 
     const subget= async()=>{
-        const facultylist=await axios.get(`${baseURL}/Faculty`)
+        const facultylist=await axios.get(`${baseURL}Faculty`)
         
         const facultyval=await facultylist.data.AllFaculty
         

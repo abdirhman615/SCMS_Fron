@@ -1,4 +1,7 @@
-import { Box,Stack,IconButton,Typography,Alert,TextField,Button, Divider, Breadcrumbs} from "@mui/material"
+import { Box,Stack,IconButton,Typography,Alert,TextField,Button, Divider,ListItemIcon, Breadcrumbs} from "@mui/material"
+import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+import ListItemButton from '@mui/material/ListItemButton';
+
 import AddHomeWorkIcon from '@mui/icons-material/AddHomeWork';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -81,6 +84,7 @@ export const HomePage = ()=>{
 
 
     const [dailogOpen,setDailog]=useState(false)
+    const [selectedMenu,setMenu]=useState('')
     // const queryclient = useQueryClient();
     const [Complaindeleteid,setComplaindeleteid]=useState('')
     const [ComplainId,setComplainId]=useState('')
@@ -372,9 +376,18 @@ const deleteComplainInfo = async (data)=>{
               <Typography variant="body1" paragraph>
                 Check the status of your complaints or view others'.
               </Typography>
-              <Link  to={'ViewComplaints'}>
-    <Button variant="outlined">View</Button>
-  </Link>
+              <Link to={'/ViewComplaints'} style={{textDecoration:"none",color:"black"}}>
+      <ListItemButton onClick={()=>setMenu('/ViewComplaints')}  sx={[ selectedMenu==='ViewComplaints' && {bgcolor:"primary.main",color:"white",":hover":{bgcolor:"primary.dark"}}]}>
+      
+        <ListItemIcon>
+          {/* <LocalLibraryIcon sx={[ selectedMenu==='ViewComplaints' && {color:"white"}]} /> */} 
+          <Button variant="outlined">View Complaints</Button>
+        </ListItemIcon>
+       
+        {/* <ListItemText primary="ViewComplaints" /> */}
+      </ListItemButton>
+
+      </Link>
              
             </StyledPaper>
           </Grid>

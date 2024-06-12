@@ -84,7 +84,7 @@ const {mutateAsync,isLoading,isError,error,data:response}= useMutation({
         jscookie.set('token',res.data.token);
         if(res.status === 200){
             setIsLogin(true);
-            usenav('/Dashboard')
+            usenav('/Dashboard/AdminDashboard')
         }
     })
   };

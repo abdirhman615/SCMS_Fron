@@ -58,10 +58,10 @@ open={openDrower}
       
    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} component="nav" >
     
-   <Link to={'Dashboard'} style={{textDecoration:"none",color:"black"}}>
-      <ListItemButton onClick={()=>setMenu('Dashboard')}  sx={[ selectedMenu==='Dashboard' && {bgcolor:"primary.main",color:"white",":hover":{bgcolor:"primary.dark"}}]}>
+   <Link to={'AdminDashboard'} style={{textDecoration:"none",color:"black"}}>
+      <ListItemButton onClick={()=>setMenu('AdminDashboard')}  sx={[ selectedMenu==='AdminDashboard' && {bgcolor:"primary.main",color:"white",":hover":{bgcolor:"primary.dark"}}]}>
         <ListItemIcon>
-          <DashboardIcon sx={[ selectedMenu==='Dashboard' && {color:"white"}]} />
+          <DashboardIcon sx={[ selectedMenu==='AdminDashboard' && {color:"white"}]} />
         </ListItemIcon>
         <ListItemText primary="Dashboard" />
       </ListItemButton>
@@ -182,10 +182,10 @@ open={openDrower}
       </ListItemButton> */}
     
     
-    <Link to={'Dashboard'} style={{textDecoration:"none",color:"black"}}>
-      <ListItemButton onClick={()=>setMenu('Dashboard')}  sx={[ selectedMenu==='Dashboard' && {bgcolor:"primary.main",color:"white",":hover":{bgcolor:"primary.dark"}}]}>
+    <Link to={'AdminDashboard'} style={{textDecoration:"none",color:"black"}}>
+      <ListItemButton onClick={()=>setMenu('AdminDashboard')}  sx={[ selectedMenu==='AdminDashboard' && {bgcolor:"primary.main",color:"white",":hover":{bgcolor:"primary.dark"}}]}>
         <ListItemIcon>
-          <DashboardIcon sx={[ selectedMenu==='Dashboard' && {color:"white"}]} />
+          <DashboardIcon sx={[ selectedMenu==='AdminDashboard' && {color:"white"}]} />
         </ListItemIcon>
         <ListItemText primary="Dashboard" />
       </ListItemButton>

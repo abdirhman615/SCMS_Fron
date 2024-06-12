@@ -14,6 +14,7 @@ import {Users} from "./components/UsersPage/Users";
 import {Login} from "./Login/login";
 import {LoginPage} from "./StdLogin/StdLogin";
 import {HomePage} from "./components/HomePage/Home";
+import AdminDashboard from "./components/HomePage/AdminDashboard";
 import FAQs from "./components/FAQs_Page/FAQs";
 import ViewComplaints from "./components/ViewComplaintsPage/ViewComplaints";
 
@@ -33,17 +34,18 @@ function app() {
       <Routes>
 
         <Route path='/admin' element={<Login/>} />
-        {/* <Route path='/' element={<Login/>} /> */}
-        <Route path='/' element={<LoginPage/>} />
+        <Route path='/' element={<Login/>} />
+        {/* <Route path='/' element={<LoginPage/>} /> */}
         {/* <Route path='/logout' element={<Logout/>} /> */}
         <Route path='*' element={<Whitescreen/>} />
 
         {/* {isLogin && <Route path='Dashboard' element={Role === "admin" ?<Dashboard /> :<DashboardPage />}> */}
-        {isLogin && <Route path='Dashboard' element={<DashboardPage /> }>
-        {/* {isLogin && <Route path='Dashboard' element={<Dashboard />}> */}
+        {/* {isLogin && <Route path='Dashboard' element={<DashboardPage /> }> */}
+        {isLogin && <Route path='Dashboard' element={<Dashboard />}>
         {/* <Route path='Dashboard' element={<Dashboard />}> */}
         {/* <Route path='/' element={<Dashboard />}> */}
           <Route path='HomePage' element={<HomePage />} />
+          <Route path='AdminDashboard' element={<AdminDashboard />} />
           <Route path='Faculty' element={<Faculty />} />
           <Route path='Department' element={<Department />} />
           <Route path='Class' element={<Class />} />

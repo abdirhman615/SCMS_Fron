@@ -15,6 +15,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import ConfirmDelete from "../../../CustomHooks/deleteComponent/ConfirmDelete";
 import { useDeleteHook } from "../../../CustomHooks/deleteComponent/deleteHooks";
 import { GetQuery, PostQuery, UpdateQuery, DeleteQuery } from '../../../Shared/ReactQuery'
+import CssBaseline from '@mui/material/CssBaseline';
+
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -162,6 +164,7 @@ console.log(facultyval)
 
   return <>
     <Box p={4}>
+    <CssBaseline />
       <ConfirmDelete open={DeleteHook.open} toggle={DeleteHook.Toggle} message={DeleteHook.message} confirm={DeleteCheck} />
 
       {/* breadcrumbs */}

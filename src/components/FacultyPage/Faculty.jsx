@@ -26,6 +26,7 @@ import {  useDeleteHook } from "../../../CustomHooks/deleteComponent/deleteHooks
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import {GetQuery,PostQuery,UpdateQuery,DeleteQuery} from '../../../Shared/ReactQuery'
+import CssBaseline from '@mui/material/CssBaseline';
 
 export const Faculty = ()=>{
     const YupValidate = yup.object({
@@ -148,6 +149,7 @@ const deleteFacultyInfo = async (data)=>{
 
     return <>
    <Box p={4}>
+   <CssBaseline />
 
    <ConfirmDelete open={deletehook.open} toggle={deletehook.Toggle} message={deletehook.message} confirm={deleteCheck} />
  <Breadcrumbs aria-label="breadcrumb">

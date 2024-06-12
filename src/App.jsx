@@ -34,14 +34,14 @@ function app() {
       <Routes>
 
         <Route path='/admin' element={<Login/>} />
-        <Route path='/' element={<Login/>} />
-        {/* <Route path='/' element={<LoginPage/>} /> */}
+        {/* <Route path='/' element={<Login/>} /> */}
+        <Route path='/' element={<LoginPage/>} />
         {/* <Route path='/logout' element={<Logout/>} /> */}
         <Route path='*' element={<Whitescreen/>} />
 
         {/* {isLogin && <Route path='Dashboard' element={Role === "admin" ?<Dashboard /> :<DashboardPage />}> */}
-        {/* {isLogin && <Route path='Dashboard' element={<DashboardPage /> }> */}
-        {isLogin && <Route path='Dashboard' element={<Dashboard />}>
+        {isLogin && <Route path='Dashboard' element={<DashboardPage /> }>
+        {/* {isLogin && <Route path='Dashboard' element={<Dashboard />}> */}
         {/* <Route path='Dashboard' element={<Dashboard />}> */}
         {/* <Route path='/' element={<Dashboard />}> */}
           <Route path='HomePage' element={<HomePage />} />

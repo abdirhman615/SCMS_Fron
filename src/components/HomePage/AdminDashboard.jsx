@@ -9,7 +9,6 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
@@ -17,10 +16,14 @@ import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-// import { mainListItems, secondaryListItems } from './listItems';
-// import Chart from './Chart';
-// import Deposits from './Deposits';
-// import Orders from './Orders';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/Inbox';
+import ReportIcon from '@mui/icons-material/Report';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Badge from '@mui/material/Badge';
+import { lightBlue, grey } from '@mui/material/colors';
 
 function Copyright(props) {
   return (
@@ -81,8 +84,17 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+  palette: {
+    primary: lightBlue,
+    secondary: grey,
+  },
+  typography: {
+    h6: {
+      fontWeight: 600,
+    },
+  },
+});
 
 export default function AdminDashboard() {
   const [open, setOpen] = React.useState(true);
@@ -94,7 +106,40 @@ export default function AdminDashboard() {
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-      
+        <AppBar position="absolute" open={open}>
+          <Toolbar
+            sx={{
+              pr: '24px', // keep right padding when drawer closed
+            }}
+          >
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={toggleDrawer}
+              sx={{
+                marginRight: '36px',
+                ...(open && { display: 'none' }),
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              component="h1"
+              variant="h6"
+              color="inherit"
+              noWrap
+              sx={{ flexGrow: 1 }}
+            >
+              Student Complaints
+            </Typography>
+            <IconButton color="inherit">
+              <Badge badgeContent={4} color="secondary">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+          </Toolbar>
+        </AppBar>
         <Drawer variant="permanent" open={open}>
           <Toolbar
             sx={{
@@ -110,9 +155,17 @@ export default function AdminDashboard() {
           </Toolbar>
           <Divider />
           <List component="nav">
-            {/* {mainListItems} */}
+            {[
+              { text: 'Dashboard', icon: <InboxIcon /> },
+              { text: 'Submit Complaint', icon: <ReportIcon /> },
+              { text: 'Profile', icon: <AccountCircleIcon /> },
+            ].map((item, index) => (
+              <ListItem button key={item.text}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} />
+              </ListItem>
+            ))}
             <Divider sx={{ my: 1 }} />
-            {/* {secondaryListItems} */}
           </List>
         </Drawer>
         <Box
@@ -130,7 +183,7 @@ export default function AdminDashboard() {
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
-              {/* Chart */}
+              {/* Complaint Summary */}
               <Grid item xs={12} md={8} lg={9}>
                 <Paper
                   sx={{
@@ -140,10 +193,21 @@ export default function AdminDashboard() {
                     height: 240,
                   }}
                 >
-                  {/* <Chart /> */}
+                  <Typography variant="h6" gutterBottom>
+                    Complaint Summary
+                  </Typography>
+                  <Typography>
+                    <strong>Total Complaints:</strong> 120
+                  </Typography>
+                  <Typography>
+                    <strong>Resolved Complaints:</strong> 80
+                  </Typography>
+                  <Typography>
+                    <strong>Pending Complaints:</strong> 40
+                  </Typography>
                 </Paper>
               </Grid>
-              {/* Recent Deposits */}
+              {/* Complaint Details */}
               <Grid item xs={12} md={4} lg={3}>
                 <Paper
                   sx={{
@@ -153,13 +217,41 @@ export default function AdminDashboard() {
                     height: 240,
                   }}
                 >
-                  {/* <Deposits /> */}
+                  <Typography variant="h6" gutterBottom>
+                    Complaint Details
+                  </Typography>
+                  <Typography>
+                    <strong>Complaint ID:</strong> 12345
+                  </Typography>
+                  <Typography>
+                    <strong>Title:</strong> Wi-Fi not working in the library
+                  </Typography>
+                  <Typography>
+                    <strong>Description:</strong> The Wi-Fi has been down for the past three days in the library.
+                  </Typography>
+                  <Typography>
+                    <strong>Status:</strong> Pending
+                  </Typography>
                 </Paper>
               </Grid>
-              {/* Recent Orders */}
+              {/* Recent Complaints */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  {/* <Orders /> */}
+                  <Typography variant="h6" gutterBottom>
+                    Recent Complaints
+                  </Typography>
+                  <Typography>
+                    <strong>1.</strong> AC not working in Classroom 101
+                  </Typography>
+                  <Typography>
+                    <strong>2.</strong> Cafeteria food quality issues
+                  </Typography>
+                  <Typography>
+                    <strong>3.</strong> Projector not functioning in Hall B
+                  </Typography>
+                  <Typography>
+                    <strong>4.</strong> Insufficient parking space
+                  </Typography>
                 </Paper>
               </Grid>
             </Grid>

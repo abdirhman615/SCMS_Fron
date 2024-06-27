@@ -137,7 +137,7 @@ const {mutate:deleteMutate} = DeleteQuery(`/Complain/${Complaindeleteid}`,'Compl
 
 
 const AddNewComplain = async (data)=>{
-
+  
     if(ComplainId !==''){
 
  try{
@@ -221,11 +221,11 @@ const deleteComplainInfo = async (data)=>{
 
 
 <Stack  spacing={2} direction={'column'}>
-<FormControl >
-<TextField label='Student name' multiline defaultValue={STDID}  maxRows={4} variant="outlined" {...register("Student_id")}  size="small"   fullWidth/>
+
+<TextField label='Student ID' multiline defaultValue={STDID}  maxRows={4} variant="outlined" {...register("Student_id")}  size="small"   fullWidth/>
 
 
-</FormControl>
+
 
 
 {/* <FormControl >

@@ -36,14 +36,14 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 export const Complain = ()=>{
     const YupValidate = yup.object({
-        Student_id: yup.string().required('Enter The Student Id'),
-        department_id: yup.string().required("Enter The department Name"),
-        Class_id: yup.string().required('Enter The Class Name'),
-        Description: yup.string().required("Enter The Description"),
-        Complain_date: yup.string().required('Enter The Complain Data'),
+        // Student_id: yup.string().required('Enter The Student Id'),
+        // department_id: yup.string().required("Enter The department Name"),
+        // Class_id: yup.string().required('Enter The Class Name'),
+        // Description: yup.string().required("Enter The Description"),
+        // Complain_date: yup.string().required('Enter The Complain Data'),
        
-          Reply_ID: yup.string().required('Enter The Reply ID'),
-          Complain_id: yup.string().required('Enter The Complain '),
+        //   Reply_ID: yup.string().required('Enter The Reply ID'),
+        //   Complain_id: yup.string().required('Enter The Complain '),
           Message: yup.string().required("Enter The Massage"),
       
         // Status: yup.string().required("Enter The Status"),
@@ -64,6 +64,7 @@ export const Complain = ()=>{
     const [Complaindeleteid,setComplaindeleteid]=useState('')
     const [ComplainId,setComplainId]=useState('')
     const [ReplyId,setReplyId]=useState('')
+    const [dis,setdis]=useState('')
     const [showAlert, setshowAlert] = useState(false)
     const [apiData, setapiData] = useState("")  
     const[subcatClass,setsubcatClass]= useState([])
@@ -116,7 +117,7 @@ export const Complain = ()=>{
 
 const {data:Complain,isLoading,isError}= GetQuery('/Complain','Complain')
 
-const {mutate,isLoading:mutateLoading} = PostQuery('/Reply','Reply')
+// const {mutate,isLoading:mutateLoading} = PostQuery('/Reply','Reply')
 
 
 // const {mutate:updateMutate,isLoading:updateLoading} = UpdateQuery(`/Complain/${ComplainId}`,'Complain')
@@ -124,16 +125,27 @@ const {mutate,isLoading:mutateLoading} = PostQuery('/Reply','Reply')
 const {mutate:deleteMutate} = DeleteQuery(`/Complain/${Complaindeleteid}`,'Complain')
 
 
-const AddNewComplain = async (data)=>{
+// const {data:Reply,isLoading,isError}= GetQuery('/Reply','Reply')
 
-    if(ReplyId !==''){
+const {mutate:postMutate,isLoading:mutateLoading} = PostQuery('/Reply','Reply')
+
+// const {mutate:updateMutate,isLoading:updateLoading} = UpdateQuery(`/Reply/${ReplyId}`,'Reply')
+ 
+// const {mutate:deleteMutate} = DeleteQuery(`/Reply/${Replydeleteid}`,'Reply')
+
+
+const AddNewReply = async (data)=>{
+  setReplyId(data._id)
+  setdis (data.Description)
+
+    if(ReplyId ==''){
 
  try{
-//   await UpdateClient(ComplainId,subdata)
+//   await UpdateClient(ReplyId,subdata)
 // console.log("Data has been Updated")
- toast.success("Data has been Updated")
+//  toast.success("Data has been Updated")
  ToggleDailog()
- updateMutate(data)
+ postMutate(data)
 reset()
     } catch( err){
         console.log("error ayaa jira ",err)
@@ -144,8 +156,8 @@ reset()
         try{
         //     await AddClient(subdata)
         //   console.log("Data has been saved")
-        //   toast.success("Data has been saved")
-        mutate(data)
+          //  toast.success("Data has been saved")
+           postMutate(data)
           ToggleDailog()
           reset()
               } catch( err){
@@ -153,22 +165,50 @@ reset()
           toast.error(err.message)
               }
 
-
     }
+    
+
+   
+}
+
+
+const AddNewComplain = async (data)=>{
+
     //  setReplyId(data.Description)
      console.log("data",data.Description)
    
 
    
 }
-
+const SubmittData=(data)=>{
+  data.Complain_id=ReplyId
+  // console.log("data",data)
+  postMutate(data)
+  ToggleDailog()
+}
 const ReplyDataCmp = async (data)=>{
   
-   
-            setReplyId(data._id)
+ console.log('submitted',data)
+
+  setReplyId(data._id)
+  setdis (data.Description)
+  // setValue("Message",data.Message)
+  try {
+    //  postMutate(data)
+     
     ToggleDailog()
+  } catch (err) {
+    toast.error(err.message)
+  }
+ 
+     reset()
+       }
+       
+            //  console.log("dis",dis)
+    // ToggleDailog()
+
           
-}
+
 
 
 const deletehook = useDeleteHook()
@@ -209,17 +249,18 @@ const deleteComplainInfo = async (data)=>{
         backdropFilter: "blur(5px) sepia(5%)",
       }} PaperProps={{ sx: { borderRadius: "20px" } }} open={dailogOpen} onClose={ToggleDailog}>
         <DialogTitle sx={{ bgcolor: "primary.dark", color: "white" }}>New Complain</DialogTitle>
-        <Box component={"form"} onSubmit={handleSubmit(ReplyDataCmp)}>
+        <Box component={"form"} onSubmit={handleSubmit(SubmittData)}>
         <DialogContent>
         <Box sx={{width:"400px"}} mt={2}>
 
 
         <Stack  spacing={2} direction={'column'}>
+     
+        <TextField label="Complain id" disabled  value={ReplyId} variant="outlined" {...register("Complain_id")} size="small" fullWidth/>
+        <TextField label="Complain Name" disabled  value={dis} variant="outlined"  size="small" fullWidth/>
 
 
 
-
-        <TextField label="Complain_id" disabled  value={ReplyId} variant="outlined" {...register("Complain_id")} size="small" fullWidth/>
 
 
 
@@ -237,9 +278,9 @@ const deleteComplainInfo = async (data)=>{
         </DialogContent>
         <DialogActions>
           <Button onClick={ToggleDailog}>Cancel</Button>
-          <Button variant="contained" disabled={mutateLoading} sx={{bgcolor:"primary"}} type="submit"  size="small">
-
-      {ReplyId !=='' ? "Send" : "Submit"}
+          <Button variant="contained" sx={{bgcolor:"primary"}} type="submit"  size="small">
+          Submit
+      {/* {ReplyId =='' ? "update" : "Submit"} */}
           </Button>
  
         </DialogActions>
@@ -271,58 +312,11 @@ const deleteComplainInfo = async (data)=>{
  <Typography >Loading...</Typography>
      </Box>
 
- </Box>) :  <ComplainList DeleteComplain={deleteComplainInfo} ComplainData={Complain?.data.AllComplain}  ReplyData={ ReplyDataCmp  } />  }
+ </Box>) :  <ComplainList DeleteComplain={deleteComplainInfo} ComplainData={Complain?.data.AllComplain}  ReplyData={ReplyDataCmp} />  }
  
 
    
-   <Box sx={{ display:'flex',justifyContent:'space-around'}}   my={3}>
-   <Card  variant="outlined" sx={{ maxWidth: 300 }}>
-      <Box sx={{ p: 3 }}>
-        <Stack direction="row" justifyContent="space-between" alignItems="center">
-          <Typography gutterBottom variant="h5" component="div">
-          Submit Complaint
-          </Typography>
-          
-        </Stack>
-        
-      </Box>
-      <Divider light />
-      <Box sx={{display:"flex",justifyContent:"space-between",p: 1}} my={2} >
-      
-        <Typography gutterBottom variant="body2">
-          Add Complain
-        </Typography>
-        <Stack direction="row" spacing={2}>
-          <IconButton   onClick={ToggleDailog}>
-<AddCircleOutlineSharp />
-        </IconButton>
-        </Stack>
-      </Box>
-    </Card>
-   <Card variant="outlined" sx={{ maxWidth: 300 }}>
-      <Box sx={{ p: 2 }}>
-        <Stack direction="row" justifyContent="space-between" alignItems="center">
-          <Typography gutterBottom variant="h5" component="div">
-          View Complaint
-          </Typography>
-          
-        </Stack>
-        
-      </Box>
-      <Divider light />
-      <Box sx={{display:"flex",justifyContent:"space-between",p: 1}} my={2} >
-      
-        <Typography gutterBottom variant="body2">
-          Add Complain
-        </Typography>
-        <Stack direction="row" spacing={2}>
-          <IconButton  >
-<AddCircleOutlineSharp />
-        </IconButton>
-        </Stack>
-      </Box>
-    </Card>
-     </Box> 
+    
      </Box>       
     </>
 }

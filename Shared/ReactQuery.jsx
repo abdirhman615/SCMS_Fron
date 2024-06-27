@@ -11,7 +11,7 @@ export const GetQuery = (endpoint, queryKey) => {
             toast.error("sorry xogta lama keenin")
         },
         onSuccess: () => {
-            toast.success("Haa xogta waa lakeeney")
+            // toast.success("Haa xogta waa lakeeney")
         }
     })
 }

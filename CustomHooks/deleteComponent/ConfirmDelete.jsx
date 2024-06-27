@@ -28,10 +28,10 @@ export default function ConfirmDelete({message,open,toggle,confirm}) {
     </Box>
         </DialogContent>
         <DialogActions>
-          <Button onClick={toggle}>Cancel</Button>
+          <Button onClick={toggle}>Maya</Button>
           <Button variant="contained" onClick={confirm}  sx={{bgcolor:"primary.main"}}   size="small">
 
-    Yes
+    Haa
           </Button>
  
         </DialogActions>

@@ -144,7 +144,7 @@ open={openDrower}
         </ListItemIcon>
         <ListItemText primary="Dashboard" />
       </ListItemButton> */}
-    <Avatar alt="Remy Sharp"  sx={{alignItems: "center",marginLeft:9 , display: "flex", justifyContent: "space-between",  width: 70, height:70, }} src="https://firebasestorage.googleapis.com/v0/b/scms-c1999.appspot.com/o/logo.png?alt=media&token=bd3609f9-d878-4671-99f0-4ad4af6e489c" />
+    <Avatar alt="Remy Sharp"  sx={{alignItems: "center",marginLeft:9 , display: "flex", justifyContent: "center",  width: 70, height:70, }} src="https://firebasestorage.googleapis.com/v0/b/scms-c1999.appspot.com/o/logo.png?alt=media&token=bd3609f9-d878-4671-99f0-4ad4af6e489c" />
 
     <Typography  gutterBottom sx={{ color: theme.palette.primary.dark, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 2 }}>
               

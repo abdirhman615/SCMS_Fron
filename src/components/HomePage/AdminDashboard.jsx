@@ -1,264 +1,132 @@
-import * as React from 'react';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import React, { useState, useEffect } from 'react';
+import { Container, Typography, Grid, Paper, Button, styled } from '@mui/material';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import PeopleIcon from '@mui/icons-material/People';
+import ReportProblemIcon from '@mui/icons-material/ReportProblem';
+import SchoolIcon from '@mui/icons-material/School';
+import { Link } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
-import MuiDrawer from '@mui/material/Drawer';
-import Box from '@mui/material/Box';
-import MuiAppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Link from '@mui/material/Link';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/Inbox';
-import ReportIcon from '@mui/icons-material/Report';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import Badge from '@mui/material/Badge';
-import { lightBlue, grey } from '@mui/material/colors';
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-const drawerWidth = 240;
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(['width', 'margin'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
+import axios from "axios"
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  padding: theme.spacing(4),
+  textAlign: 'center',
+  borderRadius: '12px',
+  transition: 'transform 0.2s ease-in-out',
+  '&:hover': {
+    transform: 'scale(1.03)',
+    boxShadow: '0px 8px 20px rgba(0, 0, 0, 0.1)',
+  },
 }));
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-  ({ theme, open }) => ({
-    '& .MuiDrawer-paper': {
-      position: 'relative',
-      whiteSpace: 'nowrap',
-      width: drawerWidth,
-      transition: theme.transitions.create('width', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      boxSizing: 'border-box',
-      ...(!open && {
-        overflowX: 'hidden',
-        transition: theme.transitions.create('width', {
-          easing: theme.transitions.easing.sharp,
-          duration: theme.transitions.duration.leavingScreen,
-        }),
-        width: theme.spacing(7),
-        [theme.breakpoints.up('sm')]: {
-          width: theme.spacing(9),
-        },
-      }),
-    },
-  }),
-);
-
-const defaultTheme = createTheme({
-  palette: {
-    primary: lightBlue,
-    secondary: grey,
+const StyledButton = styled(Button)(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  textTransform: 'none',
+  boxShadow: 'none',
+  '&:hover': {
+    backgroundColor: theme.palette.primary.dark,
   },
-  typography: {
-    h6: {
-      fontWeight: 600,
-    },
-  },
-});
+}));
 
-export default function AdminDashboard() {
-  const [open, setOpen] = React.useState(true);
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
+const AdminDashboard = () => {
+  // State to hold the number of users (simulated here with useState)
+  const [DashboardSummary, setDashboardSummary] = useState(0);
+  const baseURL =import.meta.env.VITE_APP_API_URL
+  // Simulating fetching number of users from an API
+  useEffect(() => {
+    async function onload () {
+      try {
+      
+       const { data } = await axios.get( ("http://localhost:5000/summary"))
+        setDashboardSummary(data)
+      
+       console.log("DashboardSummary",DashboardSummary)
+      } catch (error) {
+       console.log(error.message)
+      }
+     }
+     onload()
+   }, [])
+
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
-        <AppBar position="absolute" open={open}>
-          <Toolbar
-            sx={{
-              pr: '24px', // keep right padding when drawer closed
-            }}
-          >
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              onClick={toggleDrawer}
-              sx={{
-                marginRight: '36px',
-                ...(open && { display: 'none' }),
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              sx={{ flexGrow: 1 }}
-            >
-              Student Complaints
+    <Container maxWidth="lg">
+      <CssBaseline /> 
+      <Typography variant="h3" align="center" gutterBottom>
+        Student Complaint Management System
+      </Typography>
+      <Grid container spacing={4} justifyContent="center">
+        
+        <Grid item xs={12} sm={6} md={3}>
+          <StyledPaper>
+            <PeopleIcon fontSize="large" color="primary" />
+            <Typography variant="h5" gutterBottom>
+              View Users 
             </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-        <Drawer variant="permanent" open={open}>
-          <Toolbar
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-              px: [1],
-            }}
-          >
-            <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </Toolbar>
-          <Divider />
-          <List component="nav">
-            {[
-              { text: 'Dashboard', icon: <InboxIcon /> },
-              { text: 'Submit Complaint', icon: <ReportIcon /> },
-              { text: 'Profile', icon: <AccountCircleIcon /> },
-            ].map((item, index) => (
-              <ListItem button key={item.text}>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.text} />
-              </ListItem>
-            ))}
-            <Divider sx={{ my: 1 }} />
-          </List>
-        </Drawer>
-        <Box
-          component="main"
-          sx={{
-            backgroundColor: (theme) =>
-              theme.palette.mode === 'light'
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
-            flexGrow: 1,
-            height: '100vh',
-            overflow: 'auto',
-          }}
-        >
-          <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              {/* Complaint Summary */}
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Typography variant="h6" gutterBottom>
-                    Complaint Summary
-                  </Typography>
-                  <Typography>
-                    <strong>Total Complaints:</strong> 120
-                  </Typography>
-                  <Typography>
-                    <strong>Resolved Complaints:</strong> 80
-                  </Typography>
-                  <Typography>
-                    <strong>Pending Complaints:</strong> 40
-                  </Typography>
-                </Paper>
-              </Grid>
-              {/* Complaint Details */}
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Typography variant="h6" gutterBottom>
-                    Complaint Details
-                  </Typography>
-                  <Typography>
-                    <strong>Complaint ID:</strong> 12345
-                  </Typography>
-                  <Typography>
-                    <strong>Title:</strong> Wi-Fi not working in the library
-                  </Typography>
-                  <Typography>
-                    <strong>Description:</strong> The Wi-Fi has been down for the past three days in the library.
-                  </Typography>
-                  <Typography>
-                    <strong>Status:</strong> Pending
-                  </Typography>
-                </Paper>
-              </Grid>
-              {/* Recent Complaints */}
-              <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Typography variant="h6" gutterBottom>
-                    Recent Complaints
-                  </Typography>
-                  <Typography>
-                    <strong>1.</strong> AC not working in Classroom 101
-                  </Typography>
-                  <Typography>
-                    <strong>2.</strong> Cafeteria food quality issues
-                  </Typography>
-                  <Typography>
-                    <strong>3.</strong> Projector not functioning in Hall B
-                  </Typography>
-                  <Typography>
-                    <strong>4.</strong> Insufficient parking space
-                  </Typography>
-                </Paper>
-              </Grid>
-            </Grid>
-            <Copyright sx={{ pt: 4 }} />
-          </Container>
-        </Box>
-      </Box>
-    </ThemeProvider>
+            <Typography variant="body1" paragraph>
+              View and manage user information.
+            </Typography>
+            <Link to={'/Dashboard/User'} style={{ textDecoration: 'none' }}>
+              <StyledButton variant="contained" color="primary">
+                View Users
+                {DashboardSummary.NumberOfUsers}
+              </StyledButton>
+            </Link>
+          </StyledPaper>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <StyledPaper>
+            <ReportProblemIcon fontSize="large" color="primary" />
+            <Typography variant="h5" gutterBottom>
+              View Complaints
+            </Typography>
+            <Typography variant="body1" paragraph>
+              Check the status of complaints.
+            </Typography>
+            <Link to={'/ViewComplaints'} style={{ textDecoration: 'none' }}>
+              <StyledButton variant="contained" color="primary">
+                View Complaints
+                {DashboardSummary.NumberOfComplain}
+              </StyledButton>
+            </Link>
+          </StyledPaper>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <StyledPaper>
+            <AdminPanelSettingsIcon fontSize="large" color="primary" />
+            <Typography variant="h5" gutterBottom>
+              View Reply
+            </Typography>
+            <Typography variant="body1" paragraph>
+              Manage and view admin details.
+            </Typography>
+            <Link to={'/ViewAdmin'} style={{ textDecoration: 'none' }}>
+              <StyledButton variant="contained" color="primary">
+                View Reply
+                {DashboardSummary. NumberOfReply}
+              </StyledButton>
+            </Link>
+          </StyledPaper>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <StyledPaper>
+            <SchoolIcon fontSize="large" color="primary" />
+            <Typography variant="h5" gutterBottom>
+              See Students
+            </Typography>
+            <Typography variant="body1" paragraph>
+              See all student details.
+            </Typography>
+            <Link to={'/ViewAllStudents'} style={{ textDecoration: 'none' }}>
+              <StyledButton variant="contained" color="primary">
+                View All Students
+                {DashboardSummary. NumberOfStudent}
+              </StyledButton>
+            </Link>
+          </StyledPaper>
+        </Grid>
+      </Grid>
+    </Container>
   );
-}
+};
+
+export default AdminDashboard;

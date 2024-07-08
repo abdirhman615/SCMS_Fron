@@ -75,7 +75,7 @@ const {
   return (
     <Box
     sx={{
-        backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
+        backgroundImage: 'url(https://firebasestorage.googleapis.com/v0/b/scms-c1999.appspot.com/o/Stdlogin.jpg?alt=media&token=bbbeff57-4758-4a92-a484-302f628494e7)',
         backgroundSize: 'cover',
         minHeight: '100vh',
         display: 'flex',
@@ -116,7 +116,7 @@ const {
               fullWidth
               name="STD_Pass"
               label="Password"
-              type="STD_Pass"
+              type="password"
               id="STD_Pass"
               autoComplete="current-STD_Pass"
               {...register("STD_Pass")}

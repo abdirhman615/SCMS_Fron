@@ -1,7 +1,7 @@
 import { Box,Stack,IconButton,Typography,Alert,TextField,Button, Divider,ListItemIcon, Breadcrumbs} from "@mui/material"
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import ListItemButton from '@mui/material/ListItemButton';
-
+import { useNavigate } from "react-router-dom";
 import AddHomeWorkIcon from '@mui/icons-material/AddHomeWork';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -82,7 +82,7 @@ export const HomePage = ()=>{
       } = useForm({ resolver: yupResolver(YupValidate) })
 
 
-
+      const navigate = useNavigate();
     const [dailogOpen,setDailog]=useState(false)
     const [selectedMenu,setMenu]=useState('')
     // const queryclient = useQueryClient();
@@ -376,8 +376,11 @@ const deleteComplainInfo = async (data)=>{
               <Typography variant="body1" paragraph>
                 Check the status of your complaints or view others'.
               </Typography>
-              <Link to={'/ViewComplaints'} style={{textDecoration:"none",color:"black"}}>
-      <ListItemButton onClick={()=>setMenu('/ViewComplaints')}  sx={[ selectedMenu==='ViewComplaints' && {bgcolor:"primary.main",color:"white",":hover":{bgcolor:"primary.dark"}}]}>
+              <Link to={'/Dashboard/ViewComplaints'} style={{textDecoration:"none",color:"black"}}>
+      <ListItemButton onClick={()=>
+        setMenu('/ViewComplaints')
+       
+      }  sx={[ selectedMenu==='ViewComplaints' && {bgcolor:"primary.main",color:"white",":hover":{bgcolor:"primary.dark"}}]}>
       
         <ListItemIcon>
           {/* <LocalLibraryIcon sx={[ selectedMenu==='ViewComplaints' && {color:"white"}]} /> */} 
@@ -400,7 +403,7 @@ const deleteComplainInfo = async (data)=>{
               <Typography variant="body1" paragraph>
                 Find quick answers to common questions.
               </Typography>
-              <Link  to={'FAQs'}>
+              <Link  to={'/Dashboard/FAQs'}>
               <Button variant="outlined">Explore FAQs</Button>
               </Link>
             </StyledPaper>

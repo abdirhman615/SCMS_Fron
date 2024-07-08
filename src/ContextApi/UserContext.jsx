@@ -5,7 +5,8 @@ const UserContextApi = createContext()
 // const jwtdecode = from 'jwt-decode';
 import { useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
-
+import {Login} from "../Login/login";
+import {LoginPage} from "../StdLogin/StdLogin";
 export const UserContextProvider = ({ children }) => {
 
     const usenavigate = useNavigate();
@@ -32,8 +33,13 @@ export const UserContextProvider = ({ children }) => {
         const token = jscookie.get('token')
 
         if (!token ) {
+            if (window.location.pathname == '/admin') {
+                navigate('/admin'); // Redirect to admin login
+              } else {
+                navigate('/'); // Redirect to regular login
+              }
         // if (!token || (window.location.pathname !== "/admin" && window.location.pathname !== "/")) {
-            navigate("/");
+            
         }else {
             // console.log(jwtDecode(token))
             const jwtdecoded = jwtDecode(token)
@@ -46,9 +52,13 @@ export const UserContextProvider = ({ children }) => {
             setCOMID(jwtdecoded._id);
             setStdname(jwtdecoded.Stdname);
             setIsLogin(true);
+
+           
             
         }
     }, [])
+
+    
     // useEffect(() => {
     //     const token = jscookie.get('token');
     
@@ -57,7 +67,7 @@ export const UserContextProvider = ({ children }) => {
     //             if (!token) {
     //                 navigate("/");
     //             } else {
-    //                 const jwtdecoded = jwtDecode(token);
+    //                 const  = jwtDecode(token);
     //                 setEmail(jwtdecoded.email);
     //                 setIsLogin(true);
     //             }
@@ -74,6 +84,7 @@ export const UserContextProvider = ({ children }) => {
 
     return (
         <UserContextApi.Provider value={{ email,Std,IdStd,Stdname ,COMID,STDID,LogOut, isLogin, setIsLogin ,Role,setRole}}>
+           
             {children}
         </UserContextApi.Provider>
     )

@@ -305,12 +305,12 @@ const deleteComplainInfo = async (data)=>{
             <StyledPaper elevation={5}>
               <ReportProblemIcon fontSize="large" color="primary" sx={{ marginBottom: 2 }} />
               <Typography variant="h5" gutterBottom>
-                Submit a Complaint
+              Gudbi cabasho
               </Typography>
               <Typography variant="body1" paragraph>
-                Report any issues or problems you encounter.
+              Ka warbixi wixii dhibaato ama dhibaato ah ee aad la kulanto.
               </Typography>
-              <StyledButton variant="contained" onClick={ToggleDailog}>Submit</StyledButton>
+              <StyledButton variant="contained" onClick={ToggleDailog}>Gudbi</StyledButton>
              
             </StyledPaper>
           </Grid>
@@ -318,10 +318,10 @@ const deleteComplainInfo = async (data)=>{
             <StyledPaper elevation={5}>
               <VisibilityIcon fontSize="large" color="primary" sx={{ marginBottom: 2 }} />
               <Typography variant="h5" gutterBottom>
-                View Complaints
+              Daawo Cabashooyinka
               </Typography>
               <Typography variant="body1" paragraph>
-                Check the status of your complaints or view others'.
+              Hubi heerka cabashadaada ama arag kuwa kale.
               </Typography>
               <Link to={'/Dashboard/ViewComplaints'} style={{textDecoration:"none",color:"black"}}>
       <ListItemButton onClick={()=>
@@ -331,7 +331,7 @@ const deleteComplainInfo = async (data)=>{
       
         <ListItemIcon>
           {/* <LocalLibraryIcon sx={[ selectedMenu==='ViewComplaints' && {color:"white"}]} /> */} 
-          <Button variant="outlined">View Complaints</Button>
+          <Button variant="outlined">Daawo Cabashada</Button>
         </ListItemIcon>
        
         {/* <ListItemText primary="ViewComplaints" /> */}
@@ -345,10 +345,10 @@ const deleteComplainInfo = async (data)=>{
             <StyledPaper elevation={5}>
               <FAQIcon fontSize="large" color="primary" sx={{ marginBottom: 2 }} />
               <Typography variant="h5" gutterBottom>
-                FAQs
+              Baadh su'aalaha inta badan la is weydiiyo
               </Typography>
               <Typography variant="body1" paragraph>
-                Find quick answers to common questions.
+              U hel jawaabo degdeg ah su'aalaha caadiga ah.
               </Typography>
               <Link to={'/Dashboard/FAQs'} style={{textDecoration:"none",color:"black"}}>
       <ListItemButton onClick={()=>
@@ -357,7 +357,7 @@ const deleteComplainInfo = async (data)=>{
       }  sx={[ selectedMenu==='FAQs' && {bgcolor:"primary.main",color:"white",":hover":{bgcolor:"primary.dark"}}]}>
       
         <ListItemIcon>
-          <Button variant="outlined">Explore FAQs</Button>
+          <Button variant="outlined">Daawo su'aalaha </Button>
         </ListItemIcon>
              </ListItemButton>
 

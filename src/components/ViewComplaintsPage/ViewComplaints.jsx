@@ -102,10 +102,10 @@ export const StudentComplaints = ({ studentId }) => {
       <Box p={4} sx={{ background: 'f9f9f9', borderRadius: 8, boxShadow: 4 }}>
         <Breadcrumbs aria-label="breadcrumb">
           <Typography color="inherit">Dashboard</Typography>
-          <Typography color="inherit">Student Complaints</Typography>
+          <Typography color="inherit">Cabashada ardayga</Typography>
         </Breadcrumbs>
         <Divider sx={{ height: 10, my: 2 }} />
-        <Typography variant="h4" sx={{ mt: 2, mb: 3, color: 'inherit' }}>Your Complaints</Typography>
+        <Typography variant="h4" sx={{ mt: 2, mb: 3, color: 'inherit' }}>Cabashadaada</Typography>
         {loading ? (
           <Box display="flex" justifyContent="center" alignItems="center" height="50vh">
             <CircularProgress color="inherit" />
@@ -113,7 +113,7 @@ export const StudentComplaints = ({ studentId }) => {
         ) : (
           <Box>
             {complaints.length === 0 ? (
-              <Typography>No complaints found.</Typography>
+              <Typography>Wax cabasho ah lagama helin</Typography>
             ) : (
               <Grid container spacing={3}>
                 {complaints.map((complaint) => (

@@ -87,7 +87,7 @@ open={openDrower}
         <ListItemIcon>
           <LocalLibraryIcon sx={[ selectedMenu==='ViewComplaints' && {color:"white"}]} />
         </ListItemIcon>
-        <ListItemText primary="ViewComplaints" />
+        <ListItemText primary="Daawo Cabashooyinka" />
       </ListItemButton>
 
       </Link>
@@ -97,7 +97,7 @@ open={openDrower}
         <ListItemIcon>
           <GroupsIcon sx={[ selectedMenu==='FAQs' && {color:"white"}]} />
         </ListItemIcon>
-        <ListItemText primary="FAQs" />
+        <ListItemText primary="su'aalaha" />
       </ListItemButton>
       
       </Link>
@@ -172,7 +172,7 @@ open={openDrower}
         <ListItemIcon>
           <LocalLibraryIcon sx={[ selectedMenu==='ViewComplaints' && {color:"white"}]} />
         </ListItemIcon>
-        <ListItemText primary="ViewComplaints" />
+        <ListItemText primary="Daawo Cabashooyinka" />
       </ListItemButton>
 
       </Link>
@@ -182,7 +182,7 @@ open={openDrower}
         <ListItemIcon>
           <GroupsIcon sx={[ selectedMenu==='FAQs' && {color:"white"}]} />
         </ListItemIcon>
-        <ListItemText primary="FAQs" />
+        <ListItemText primary="su'aalaha" />
       </ListItemButton>
       
       </Link>
@@ -193,7 +193,7 @@ open={openDrower}
           <ListItemIcon>
             <ExitToAppIcon />
           </ListItemIcon>
-          <ListItemText primary="Logout" />
+          <ListItemText primary="Ka bax" />
         </ListItem>
       </List>
     </List>

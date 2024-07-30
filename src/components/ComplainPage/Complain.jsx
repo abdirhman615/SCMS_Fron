@@ -231,24 +231,24 @@ const deleteComplainInfo = async (data)=>{
    <CssBaseline />
    <ConfirmDelete open={deletehook.open} toggle={deletehook.Toggle} message={deletehook.message} confirm={deleteCheck} />
  <Breadcrumbs aria-label="breadcrumb">
-  <Link underline="hover" color="inherit" to={'Dashboard'}>
+  <Link to={'/Dashboard/AdminDashboard'} underline="hover" color="inherit">
     Dashboard
   </Link>
-  <Typography color="text.primary">Complain</Typography>
+  <Typography color="text.primary">Cabasho</Typography>
 </Breadcrumbs>
 
  <Divider sx={{height:10}}/>
-    <Alert severity="info">Our Complain</Alert>
-    {/* <Box sx={{display:"flex",justifyContent:"space-between"}} my={2}>
-        <Typography variant="h6">List Complain</Typography>
-        <IconButton   onClick={ToggleDailog}>
+    <Alert severity="info">Cabashadayada</Alert>
+    <Box sx={{display:"flex",justifyContent:"space-between"}} my={2}>
+        <Typography variant="h6">Liiska Cabashada</Typography>
+        {/* <IconButton   onClick={ToggleDailog}>
 <AddCircleOutlineSharp />
-        </IconButton>
-    </Box> */}
+        </IconButton> */}
+    </Box>
     <Dialog sx={{
         backdropFilter: "blur(5px) sepia(5%)",
       }} PaperProps={{ sx: { borderRadius: "20px" } }} open={dailogOpen} onClose={ToggleDailog}>
-        <DialogTitle sx={{ bgcolor: "primary.dark", color: "white" }}>New Complain</DialogTitle>
+        <DialogTitle sx={{ bgcolor: "primary.dark", color: "white" }}>Cabasho Cusub</DialogTitle>
         <Box component={"form"} onSubmit={handleSubmit(SubmittData)}>
         <DialogContent>
         <Box sx={{width:"400px"}} mt={2}>

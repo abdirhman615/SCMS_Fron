@@ -186,15 +186,15 @@ const deleteStudentInfo = async (data)=>{
    <CssBaseline />
    <ConfirmDelete open={deletehook.open} toggle={deletehook.Toggle} message={deletehook.message} confirm={deleteCheck} />
  <Breadcrumbs aria-label="breadcrumb">
-  <Link underline="hover" color="inherit" href="#">
+  <Link to={'/Dashboard/AdminDashboard'} underline="hover" color="inherit" href="#">
     Dashboard
   </Link>
-  <Typography color="text.primary">Student</Typography>
+  <Typography color="text.primary">Arday</Typography>
 </Breadcrumbs>
  <Divider sx={{height:10}}/>
-    <Alert severity="info">Our Student</Alert>
+    <Alert severity="info">Ardaygeena</Alert>
     <Box sx={{display:"flex",justifyContent:"space-between"}} my={2}>
-        <Typography variant="h6">List Student</Typography>
+        <Typography variant="h6">Liiska Ardayga</Typography>
         <IconButton   onClick={ToggleDailog}>
 <AddCircleOutlineSharp />
         </IconButton>
@@ -202,7 +202,7 @@ const deleteStudentInfo = async (data)=>{
     <Dialog sx={{
         backdropFilter: "blur(5px) sepia(5%)",
       }} PaperProps={{ sx: { borderRadius: "20px" } }} open={dailogOpen} onClose={ToggleDailog}>
-        <DialogTitle sx={{ bgcolor: "primary.dark", color: "white" }}>New Student</DialogTitle>
+        <DialogTitle sx={{ bgcolor: "primary.dark", color: "white" }}>Arday cusub</DialogTitle>
         <Box component={"form"} onSubmit={handleSubmit(AddNewStudent)}>
         <DialogContent>
         <Box sx={{width:"400px"}} mt={2}>

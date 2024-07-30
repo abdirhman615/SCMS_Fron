@@ -17,7 +17,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios"
 import { styled } from '@mui/system';
 import {  Container, Grid, Paper } from '@mui/material';
-import { ReportProblemOutlined as ReportProblemIcon, VisibilityOutlined as VisibilityIcon, HelpOutlineOutlined as FAQIcon } from '@mui/icons-material';
+import { ReportProblemOutlined as ReportProblemIcon, VisibilityOutlined as VisibilityIcon, HelpOutlineOutlined as FAQIcon, Input } from '@mui/icons-material';
 import { useUserContext } from '../../ContextApi/UserContext';
 // import SweetAlert from 'react-bootstrap-sweetalert';
 // import { MDBDataTable } from "mdbreact"
@@ -137,7 +137,8 @@ const {mutate:deleteMutate} = DeleteQuery(`/Complain/${Complaindeleteid}`,'Compl
 
 
 const AddNewComplain = async (data)=>{
-  
+
+ 
     if(ComplainId !==''){
 
  try{
@@ -168,7 +169,7 @@ reset()
 
     }
     
-
+     
    
 }
 
@@ -197,6 +198,7 @@ const deleteComplainInfo = async (data)=>{
 }
 
 
+
     return <>
    <Box p={4}>
 
@@ -222,65 +224,10 @@ const deleteComplainInfo = async (data)=>{
 
 <Stack  spacing={2} direction={'column'}>
 
-<TextField label='Student ID' multiline defaultValue={STDID}  maxRows={4} variant="outlined" {...register("Student_id")}  size="small"   fullWidth/>
+<TextField label='Student ID' multiline value={STDID}   maxRows={4} variant="outlined" {...register("Student_id")}  size="small"  fullWidth />
 
 
 
-
-
-{/* <FormControl >
-<InputLabel id="demo-multiple-name-label">Student Name</InputLabel>
-  <Select label="Student id" variant="outlined" {...register("Student_id")} size="small" fullWidth>
-    
-  {subcatSTD.map((STDval) => (
-    <MenuItem key={STDval._id} value={STDval._id}>
-      {STDval.Stdname}
-    </MenuItem>
-  ))}
-</Select>
-{errors.Student_id ? (
-                  <Typography sx={{ color: "error.main" }}>
-                    {errors.Student_id.message}
-                  </Typography>
-                ) : null}
-</FormControl> */}
-
-{/* <FormControl >
-<InputLabel id="demo-multiple-name-label">Departments</InputLabel>
-  <Select label="Department id" variant="outlined" {...register("department_id")} size="small" fullWidth>
-    
-  {subcatSTD.map((STDval) => (
-    <MenuItem key={STDval._id} value={STDval._id}>
-      {STDval.department_id.departmentname}
-    </MenuItem>
-  ))}
-</Select>
-{errors.department_id ? (
-                  <Typography sx={{ color: "error.main" }}>
-                    {errors.department_id.message}
-                  </Typography>
-                ) : null}
-</FormControl> */}
-
-{/* <FormControl >
-<InputLabel id="demo-multiple-name-label">Class Name</InputLabel>
-  <Select label="Class id" variant="outlined" {...register("Class_id")} size="small" fullWidth>
-    
-  {subcatClass.map((Classval) => (
-    <MenuItem key={Classval._id} value={Classval._id}>
-      {Classval.Classname}
-    </MenuItem>
-  ))}
-</Select>
-{errors.Class_id ? (
-                  <Typography sx={{ color: "error.main" }}>
-                    {errors.Class_id.message}
-                  </Typography>
-                ) : null}
-</FormControl> */}
-
-
-{/* <TextField label="Description" {...register("Description")} variant="outlined" size="small" fullWidth/> */}
 
 <TextField label="Description" multiline maxRows={4} variant="outlined" {...register("Description")}  size="small" fullWidth/>
 {errors.Description ? (
@@ -403,9 +350,18 @@ const deleteComplainInfo = async (data)=>{
               <Typography variant="body1" paragraph>
                 Find quick answers to common questions.
               </Typography>
-              <Link  to={'/Dashboard/FAQs'}>
-              <Button variant="outlined">Explore FAQs</Button>
-              </Link>
+              <Link to={'/Dashboard/FAQs'} style={{textDecoration:"none",color:"black"}}>
+      <ListItemButton onClick={()=>
+        setMenu('/FAQs')
+       
+      }  sx={[ selectedMenu==='FAQs' && {bgcolor:"primary.main",color:"white",":hover":{bgcolor:"primary.dark"}}]}>
+      
+        <ListItemIcon>
+          <Button variant="outlined">Explore FAQs</Button>
+        </ListItemIcon>
+             </ListItemButton>
+
+      </Link>
             </StyledPaper>
           </Grid>
         </Grid>

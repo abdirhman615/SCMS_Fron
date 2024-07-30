@@ -171,15 +171,15 @@ const deleteReplyInfo = async (data)=>{
    <CssBaseline />
    <ConfirmDelete open={deletehook.open} toggle={deletehook.Toggle} message={deletehook.message} confirm={deleteCheck} />
  <Breadcrumbs aria-label="breadcrumb">
-  <Link underline="hover" color="inherit" href="#">
+  <Link to={'/Dashboard/AdminDashboard'} underline="hover" color="inherit" href="#">
     Dashboard
   </Link>
-  <Typography color="text.primary">Reply</Typography>
+  <Typography color="text.primary">Jawaab</Typography>
 </Breadcrumbs>
  <Divider sx={{height:10}}/>
-    <Alert severity="info">Our Reply</Alert>
+    <Alert severity="info">Jawaabteena</Alert>
     <Box sx={{display:"flex",justifyContent:"space-between"}} my={2}>
-        <Typography variant="h6">List Reply</Typography>
+        <Typography variant="h6">Jawaabta Liiska</Typography>
         <IconButton   onClick={ToggleDailog}>
 <AddCircleOutlineSharp />
         </IconButton>
@@ -187,7 +187,7 @@ const deleteReplyInfo = async (data)=>{
     <Dialog sx={{
         backdropFilter: "blur(5px) sepia(5%)",
       }} PaperProps={{ sx: { borderRadius: "20px" } }} open={dailogOpen} onClose={ToggleDailog}>
-        <DialogTitle sx={{ bgcolor: "primary.dark", color: "white" }}>New Reply</DialogTitle>
+        <DialogTitle sx={{ bgcolor: "primary.dark", color: "white" }}>Jawaab Cusub</DialogTitle>
         <Box component={"form"} onSubmit={handleSubmit(AddNewReply)}>
         <DialogContent>
         <Box sx={{width:"400px"}} mt={2}>

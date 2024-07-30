@@ -253,7 +253,7 @@ onClick={handleTogler}>
 
 <Stack  direction={'row'} spacing={10}>
 
-<Typography >  User : {email}</Typography></Stack>
+<Typography >  Isticmaale : {email}</Typography></Stack>
 <IconButton sx={{ p: 0 }} onClick={() => LogOut()}>
               <LoginOutlined sx={{ color: "white" }} />
             </IconButton>

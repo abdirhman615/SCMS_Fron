@@ -34,7 +34,7 @@ import axios from "axios"
 export const Users = ()=>{
 
   const YupValidate = yup.object({
-    USER_ID: yup.string().required('Enter The USER_ID'),
+    // USER_ID: yup.string().required('Enter The USER_ID'),
     username: yup.string().required('Enter The username'),
     Password: yup.string().required("Enter The Password"),
     usertype: yup.string().required("Enter The usertype"),
@@ -110,7 +110,7 @@ console.log(facultyval)
     else {
       try {
         mutateAsync(data).then(() => {
-          toast.success("data has been inserted successfully")
+          // toast.success("data has been inserted successfully")
 
         })
         // await AddClient(data)
@@ -170,18 +170,18 @@ console.log(facultyval)
       {/* breadcrumbs */}
 
       <Breadcrumbs aria-label="breadcrumb">
-        <Link underline="hover" color="inherit" href="#">
+        <Link to={'/Dashboard/AdminDashboard'}underline="hover" color="inherit" href="#">
           Dashboard
         </Link>
 
-        <Typography color="text.primary">Users</Typography>
+        <Typography color="text.primary">Isticmaale</Typography>
       </Breadcrumbs>
 
 
       {/* end */}
-      <Alert severity="info">Users</Alert>
+      <Alert severity="info">Isticmaale</Alert>
       <Box sx={{ display: "flex", justifyContent: "space-between" }} my={4}>
-        <Typography variant="h6">Users List</Typography>
+        <Typography variant="h6">Liiska Isticmaalayaasha</Typography>
 
         <IconButton onClick={ToggleDailog}>
           <ControlPointIcon  />
@@ -202,12 +202,12 @@ console.log(facultyval)
 
 
 
-                <TextField label="USER ID" {...register("USER_ID")} variant="outlined" size="small" fullWidth />
+                {/* <TextField label="USER ID" {...register("USER_ID")} variant="outlined" size="small" fullWidth />
                 {errors.USER_ID ? (
                   <Typography sx={{ color: "error.main" }}>
                     {errors.USER_ID.message}
                   </Typography>
-                ) : null}
+                ) : null} */}
                 <TextField label="username" {...register("username")} variant="outlined" size="small" fullWidth />
                 {errors.username ? (
                   <Typography sx={{ color: "error.main" }}>

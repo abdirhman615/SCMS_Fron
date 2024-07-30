@@ -72,7 +72,7 @@ open={openDrower}
         <ListItemIcon>
           <LocalLibraryIcon sx={[ selectedMenu==='Faculty' && {color:"white"}]} />
         </ListItemIcon>
-        <ListItemText primary="Faculty" />
+        <ListItemText primary="Kulliyadda" />
       </ListItemButton>
 
       </Link>
@@ -81,7 +81,7 @@ open={openDrower}
         <ListItemIcon>
           <GroupsIcon sx={[ selectedMenu==='Department' && {color:"white"}]} />
         </ListItemIcon>
-        <ListItemText primary="Department" />
+        <ListItemText primary="Waaxda" />
       </ListItemButton>
       
       </Link>
@@ -95,7 +95,7 @@ open={openDrower}
         <ListItemIcon>
           <ClassIcon sx={[selectedMenu === 'Class' && {color:"white"}]}/>
         </ListItemIcon>
-        <ListItemText primary="Class" />
+        <ListItemText primary="Fasalka" />
       </ListItemButton>
 </Link>
 
@@ -106,7 +106,7 @@ open={openDrower}
         <ListItemIcon>
           <GroupAddIcon sx={[selectedMenu === 'Student' && {color:"white"}]}/>
         </ListItemIcon>
-        <ListItemText primary="Student" />
+        <ListItemText primary="Arday" />
        
       </ListItemButton>
       </Link>
@@ -118,7 +118,7 @@ open={openDrower}
         <ListItemIcon>
           <AssignmentIndIcon sx={[selectedMenu === 'Complain' && {color:"white"}]}/>
         </ListItemIcon>
-        <ListItemText primary="Complain" />
+        <ListItemText primary="Cabashada" />
         
       </ListItemButton>
 
@@ -130,7 +130,7 @@ open={openDrower}
         <ListItemIcon>
           <ChatIcon sx={[selectedMenu === 'Reply' && {color:"white"}]} />
         </ListItemIcon>
-        <ListItemText primary="Reply" />
+        <ListItemText primary="Jawaab" />
       </ListItemButton>
       </Link>
 
@@ -141,7 +141,7 @@ open={openDrower}
         <ListItemIcon>
           <ContactsIcon sx={[selectedMenu === 'User' && {color:"white"}]}/>
         </ListItemIcon>
-        <ListItemText primary="User" />
+        <ListItemText primary="isticmaale" />
         
       </ListItemButton>
     </Link>
@@ -196,7 +196,7 @@ open={openDrower}
         <ListItemIcon>
           <LocalLibraryIcon sx={[ selectedMenu==='Faculty' && {color:"white"}]} />
         </ListItemIcon>
-        <ListItemText primary="Faculty" />
+        <ListItemText primary="Kulliyadda" />
       </ListItemButton>
 
       </Link>
@@ -205,7 +205,7 @@ open={openDrower}
         <ListItemIcon>
           <GroupsIcon sx={[ selectedMenu==='Department' && {color:"white"}]} />
         </ListItemIcon>
-        <ListItemText primary="Department" />
+        <ListItemText primary="Waaxda" />
       </ListItemButton>
       
       </Link>
@@ -219,7 +219,7 @@ open={openDrower}
         <ListItemIcon>
           <ClassIcon sx={[selectedMenu === 'Class' && {color:"white"}]}/>
         </ListItemIcon>
-        <ListItemText primary="Class" />
+        <ListItemText primary="Fasalka" />
       </ListItemButton>
 </Link>
 
@@ -230,7 +230,7 @@ open={openDrower}
         <ListItemIcon>
           <GroupAddIcon sx={[selectedMenu === 'Student' && {color:"white"}]}/>
         </ListItemIcon>
-        <ListItemText primary="Student" />
+        <ListItemText primary="Arday" />
        
       </ListItemButton>
       </Link>
@@ -242,7 +242,7 @@ open={openDrower}
         <ListItemIcon>
           <AssignmentIndIcon sx={[selectedMenu === 'Complain' && {color:"white"}]}/>
         </ListItemIcon>
-        <ListItemText primary="Complain" />
+        <ListItemText primary="Cabashada" />
         
       </ListItemButton>
 
@@ -254,7 +254,7 @@ open={openDrower}
         <ListItemIcon>
           <ChatIcon sx={[selectedMenu === 'Reply' && {color:"white"}]} />
         </ListItemIcon>
-        <ListItemText primary="Reply" />
+        <ListItemText primary="Jawaab" />
       </ListItemButton>
       </Link>
 
@@ -265,7 +265,7 @@ open={openDrower}
         <ListItemIcon>
           <ContactsIcon sx={[selectedMenu === 'User' && {color:"white"}]}/>
         </ListItemIcon>
-        <ListItemText primary="User" />
+        <ListItemText primary="isticmaale" />
         
       </ListItemButton>
     </Link>

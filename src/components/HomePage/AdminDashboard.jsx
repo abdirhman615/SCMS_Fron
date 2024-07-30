@@ -60,14 +60,14 @@ const AdminDashboard = () => {
           <StyledPaper>
             <PeopleIcon fontSize="large" color="primary" />
             <Typography variant="h5" gutterBottom>
-              View Users 
+            Daawo Isticmaalayaasha 
             </Typography>
             <Typography variant="body1" paragraph>
-              View and manage user information.
+            Arag oo maamul macluumaadka isticmaalaha
             </Typography>
             <Link to={'/Dashboard/User'} style={{ textDecoration: 'none' }}>
               <StyledButton variant="contained" color="primary">
-                View Users
+              Daawo Isticmalah {" "}
                 {DashboardSummary.NumberOfUsers}
               </StyledButton>
             </Link>
@@ -77,14 +77,14 @@ const AdminDashboard = () => {
           <StyledPaper>
             <ReportProblemIcon fontSize="large" color="primary" />
             <Typography variant="h5" gutterBottom>
-              View Complaints
+            Daawo Cabashooyinka
             </Typography>
             <Typography variant="body1" paragraph>
-              Check the status of complaints.
+            Hubi heerka cabashooyinka.
             </Typography>
             <Link to={'/ViewComplaints'} style={{ textDecoration: 'none' }}>
               <StyledButton variant="contained" color="primary">
-                View Complaints
+              Daawo Cabashooyinka{" "}
                 {DashboardSummary.NumberOfComplain}
               </StyledButton>
             </Link>
@@ -94,14 +94,14 @@ const AdminDashboard = () => {
           <StyledPaper>
             <AdminPanelSettingsIcon fontSize="large" color="primary" />
             <Typography variant="h5" gutterBottom>
-              View Reply
+            Daawo Jawaabta
             </Typography>
             <Typography variant="body1" paragraph>
-              Manage and view admin details.
+            Maamul oo arag faahfaahinta maamulka
             </Typography>
             <Link to={'/ViewAdmin'} style={{ textDecoration: 'none' }}>
               <StyledButton variant="contained" color="primary">
-                View Reply
+              Daawo Jawaabta{" "}
                 {DashboardSummary. NumberOfReply}
               </StyledButton>
             </Link>
@@ -111,14 +111,14 @@ const AdminDashboard = () => {
           <StyledPaper>
             <SchoolIcon fontSize="large" color="primary" />
             <Typography variant="h5" gutterBottom>
-              See Students
+            Daawo Ardayda
             </Typography>
             <Typography variant="body1" paragraph>
-              See all student details.
+            Eeg dhammaan faahfaahinta ardayga.
             </Typography>
             <Link to={'/ViewAllStudents'} style={{ textDecoration: 'none' }}>
               <StyledButton variant="contained" color="primary">
-                View All Students
+              Daawo Dhammaan Ardayda{" "}
                 {DashboardSummary. NumberOfStudent}
               </StyledButton>
             </Link>
